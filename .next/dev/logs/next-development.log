@@ -1,0 +1,489 @@
+[00:00:02.532] Server  LOG     ✓ Ready in 1626ms
+[00:01:43.959] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:03.545] Server  LOG     ✓ Compiled in 877ms
+[00:04:30.559] Server  LOG     ✓ Compiled in 147ms
+[00:04:34.643] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:05:19.666] Server  LOG     ✓ Compiled in 198ms
+[00:18:17.531] Server  ERROR   ⨯ ReferenceError: Image is not defined
+[00:18:18.527] Browser ERROR   uncaughtError: ReferenceError: Image is not defined
+[00:18:28.170] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:40.511] Browser WARN    Image with src "http://localhost:3000/assets/icons/logo-header.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:43:23.643] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.646] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.649] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.651] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.657] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.664] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.669] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.671] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.675] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.681] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.684] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.687] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.690] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:23.693] Server  ERROR   ⨯ ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:43:24.495] Browser ERROR   ./app/page.js:3:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Image from "next/image";
+  2 | import Navbar from "./components/Navbar";
+> 3 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function Home() {
+  6 |   return (
+
+https://nextjs.org/docs/messages/module-not-found
+[01:11:57.500] Browser WARN    Image with src "/assets/images/bg-hero.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:15:29.135] Browser ERROR   uncaughtError: Error: Image with src "/assets/images/bg-hero.png" is missing required "width" property.
+[01:15:38.602] Server  LOG     ✓ Compiled in 170ms
+[01:15:39.522] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:25.246] Server  LOG     ✓ Compiled in 151ms
+[01:18:22.505] Browser WARN    Image with src "/assets/images/bg-hero.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:20:15.500] Browser ERROR   ./app/components/LandingSection.jsx:13:9
+Parsing ecmascript source code failed
+  11 |         alt="Background"
+  12 |         width={}
+> 13 |         height={749}
+     |         ^^^^^^
+  14 |         className="absolute w-[1440px] h-[749px] inset-0  object-cover"
+  15 |       />
+  16 |
+
+Expected '</', got 'ident'
+
+Import trace:
+  Server Component:
+    ./app/components/LandingSection.jsx
+    ./app/page.js
+[01:20:19.074] Server  LOG     ✓ Compiled in 155ms
+[01:24:08.664] Server  LOG     ✓ Compiled in 104ms
+[01:24:58.508] Browser ERROR   uncaughtError: Error: Image with src "/assets/images/bg-hero.png" is missing required "height" property.
+[01:25:15.750] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:25:16.296] Browser WARN    Image with src "/assets/images/bg-hero.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:28:41.270] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:28:41.400] Browser WARN    Image with src "/assets/icons/logo-header.svg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:28:44.723] Browser WARN    Image with src "/assets/images/111.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:28:45.178] Browser WARN    Image with src "/assets/images/111.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:38:42.508] Browser WARN    Image with src "/assets/images/111.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:39:31.508] Browser WARN    Image with src "/assets/images/bg-hero.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:39:42.583] Server  ERROR   ⨯ "The requested resource isn't a valid image for" "/assets/images/hero-svg" "received" null
+[01:42:21.919] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.921] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.925] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.927] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.931] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.933] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.936] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.937] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.940] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.943] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.947] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.949] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.954] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:21.971] Server  ERROR   ⨯ ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:42:22.504] Browser ERROR   ./app/page.js:2:1
+Module not found: Can't resolve './components/LandingSection'
+  1 | import Navbar from "./components/Navbar";
+> 2 | import LandingSection from "./components/LandingSection";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export default function Home() {
+  5 |   return (
+
+https://nextjs.org/docs/messages/module-not-found
+[01:51:49.088] Server  LOG     ✓ Compiled in 200ms
+[01:57:22.780] Server  LOG     ✓ Compiled in 296ms
+[02:00:32.190] Server  LOG     ✓ Compiled in 223ms
+[02:09:20.469] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.506] Server  ERROR   ⨯ "unhandledRejection:" Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.539] Server  ERROR   ⨯ "unhandledRejection: " Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.633] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.643] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.714] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.745] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.788] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.800] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.825] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:20.839] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:21.052] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
+[02:09:21.076] Server  ERROR   Error: ENOENT: no such file or directory, scandir 'E:\Work\xNerds\landing-page\app'
