@@ -35,8 +35,8 @@ const LandingSection = () => {
         src="/assets/images/bg-hero.png"
         alt="Hero background"
         width={1570}
-        height={600}
-        className="absolute right-[-120px] -bottom-30 z-0 object-cover object-center scale-90"
+        height={800}
+        className="absolute right-[-120px] min-h-[800px] -bottom-30 z-0 object-cover object-center scale-90"
       />
 
       {/* Gradient Overlay */}
@@ -49,7 +49,7 @@ const LandingSection = () => {
       {/* Content */}
       <div className="relative z-20 mx-auto flex h-full w-full max-w-[1240px] items-start px-5 pt-20 md:px-8 md:pt-24">
         <div className="max-w-[580px] text-white">
-          <div className="mb-8 inline-block border border-[#16d4f4] px-4 py-2 text-[12px] tracking-[3px] bg-gradient-to-r from-[#DBD633] via-[#9ED473] to-[#1CCDE6] bg-clip-text text-transparent">
+          <div className="mb-8 inline-block font-semibold border border-[#16d4f4] px-4 py-2 text-[12px] tracking-[3px] bg-gradient-to-r from-[#1CCDE6] via-[#9ED473] to-[#DBD633] bg-clip-text text-transparent">
             THE LEADING PROP TRADING FIRM
           </div>
 
