@@ -4,14 +4,14 @@ export default function ButtonGradient({
   className = "",
   type = "button",
 }) {
-  const isRegister = variant === "register";
+  const isRegister = variant === "hello";
 
   return (
     <button
       type={type}
       className={`group relative inline-flex min-h-[40px] px-4 py-2 items-center justify-center overflow-hidden text-[14px] font-semibold leading-none text-white ${className}`}
     >
-      {/* Gradient background */}
+      {/* Base Gradient background */}
       <span
         className={`absolute inset-0 ${
           isRegister
@@ -20,6 +20,8 @@ export default function ButtonGradient({
         }`}
       />
 
+      {/* 🔥 Hover Glow Overlay (NEW) */}
+     <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(28,205,230,0.22)_0%,rgba(219,214,51,0.22)_100%)] opacity-0 transition duration-300 group-hover:opacity-100 z-10" />
       {/* Decorative borders */}
       <span className="absolute left-0 top-0 h-[2px] w-[20px] bg-[#18d6f5]" />
       <span className="absolute left-0 top-0 h-full w-[2px] bg-[#18d6f5]" />

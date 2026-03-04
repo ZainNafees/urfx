@@ -29,7 +29,7 @@ const PayoutSection = () => {
   ];
 
   return (
-    <section className="mx-auto w-full  px-5 py-10 text-white md:px-8">
+    <section className="mx-auto w-full px-5 py-10 text-white md:px-20">
        <div className="px-6 py-10 md:px-10">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {payoutData.map((item) => (
