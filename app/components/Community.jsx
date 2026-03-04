@@ -26,26 +26,43 @@ const Community = () => {
       </h2>
 
       <div className="mt-12 flex flex-col gap-4 lg:flex-row">
-        <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid flex-1 grid-cols-2 gap-4 sm:grid-cols-2">
           {statCards.map((item) => (
             <article
-              key={item.id}
-              className="flex min-h-[164px] items-center justify-between bg-[linear-gradient(120deg,#1f2528_0%,#15181b_100%)] px-7 py-6"
-            >
-              <div>
-                <h3 className="text-[40px] font-semibold leading-none">
-                  {item.value}
-                </h3>
-                <p className="mt-3 text-[20px] text-gray-400">{item.label}</p>
-              </div>
-              <Image
-                src={item.img}
-                alt="icons"
-                width={110}
-                height={110}
-                className="h-[110px] w-[110px] rounded-full object-cover"
-              />
-            </article>
+  key={item.id}
+  className="
+    flex flex-col sm:flex-row
+    items-center sm:items-center
+    text-center sm:text-left
+    gap-4 sm:gap-0
+    min-h-[150px] sm:min-h-[164px]
+    bg-[linear-gradient(120deg,#1f2528_0%,#15181b_100%)]
+    px-5 py-6
+  "
+>
+  {/* Text Section */}
+  <div className="flex-1">
+    <h3 className="text-[28px] sm:text-[40px] font-semibold leading-none">
+      {item.value}
+    </h3>
+    <p className="mt-2 sm:mt-3 text-[14px] sm:text-[20px] text-gray-400">
+      {item.label}
+    </p>
+  </div>
+
+  {/* Image */}
+  <Image
+    src={item.img}
+    alt={item.label}
+    width={110}
+    height={110}
+    className="
+      h-[70px] w-[70px]
+      sm:h-[110px] sm:w-[110px]
+      object-contain
+    "
+  />
+</article>
           ))}
         </div>
 
@@ -63,15 +80,15 @@ const Community = () => {
             </p>
           </div>
           <div className=" self-end">
-           <div className="self-end w-[195px] h-[195px]">
-  <Image
-    src="/assets/icons/headphone.png"
-    alt="Headphone"
-    width={195}
-    height={195}
-    className="object-contain"
-  />
-</div>
+            <div className="self-end w-[195px] h-[195px]">
+              <Image
+                src="/assets/icons/headphone.png"
+                alt="Headphone"
+                width={195}
+                height={195}
+                className="object-contain"
+              />
+            </div>
           </div>
         </article>
       </div>
