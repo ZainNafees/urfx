@@ -6,10 +6,12 @@ const navItems = ["Home", "Testimonials", "About Us", "FAQ", "Contact"];
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[#05070d]/90 backdrop-blur">
-      <div className="mx-auto flex h-[74px] w-full max-w-[1240px] items-center justify-between px-5 md:px-8">
-        <Image src="/assets/icons/logo-header.svg" alt="URFX logo" width={134} height={41} />
+      <div className="relative mx-auto flex h-[84px] w-full max-w-[1240px] items-center justify-between px-5 md:px-8">
+        <div className="flex w-[170px] items-center">
+          <Image src="/assets/icons/logo-header.svg" alt="URFX logo" width={134} height={41} />
+        </div>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-10 lg:flex">
           {navItems.map((item) => (
             <a
               key={item}
@@ -21,9 +23,9 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <ButtonGradient className="h-[44px] min-w-[92px] px-4 text-[18px]">Login</ButtonGradient>
-          <ButtonGradient variant="register" className="h-[44px] min-w-[122px] px-5 text-[18px]">
+        <div className="flex w-[260px] items-center justify-end gap-3">
+          <ButtonGradient className="h-[40px] min-w-[80px] px-4 text-[15px]">Login</ButtonGradient>
+          <ButtonGradient variant="register" className="h-[40px] min-w-[100px] px-5 text-[15px]">
             Register
           </ButtonGradient>
         </div>
