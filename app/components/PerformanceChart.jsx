@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -13,6 +12,7 @@ import {
   YAxis,
 } from "recharts";
 import { ChartColumn, Clock3, DollarSign, ShieldCheck } from "lucide-react";
+import ButtonGradient from "./ButtonGradient";
 
 const TIME_FILTERS = ["1W", "1M", "6M", "1Y", "All Time"];
 
@@ -57,24 +57,28 @@ const STAT_CARDS = [
     title: "Success Rate",
     value: "92.3%",
     badge: "+5.2%",
+    detail: "of trades hit profit",
     icon: ChartColumn,
   },
   {
-    title: "Average Profit",
+    title: "Average profit",
     value: "$185.50",
     badge: "+12.5%",
+    detail: "per winning trade",
     icon: DollarSign,
   },
   {
     title: "Execution Rate",
     value: "0.04s",
-    badge: "Stable",
+    badge: "99.9%",
+    detail: "average execution time",
     icon: Clock3,
   },
   {
     title: "Risk Management",
     value: "Active",
     badge: "99.9%",
+    detail: "advanced protection enabled",
     icon: ShieldCheck,
   },
 ];
@@ -84,8 +88,12 @@ function ProfitTooltip({ active, payload }) {
   const { date, value } = payload[0].payload;
 
   return (
-    <div className="rounded-lg bg-white px-3 py-2 text-xs font-semibold text-[#111] shadow-lg">
-      {date} | ${value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+    <div className="rounded-lg border border-zinc-500 bg-[#2a2d31] px-3 py-2 text-xs font-semibold text-white shadow-lg">
+      {date} | $
+      {value.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}
     </div>
   );
 }
@@ -103,7 +111,7 @@ export default function PerformanceChart() {
           hour: "numeric",
           minute: "2-digit",
           second: "2-digit",
-        })
+        }),
       );
     }, 1000);
 
@@ -113,28 +121,33 @@ export default function PerformanceChart() {
   const [profitDollars, profitCents] = (7223.43).toFixed(2).split(".");
 
   return (
-    <section
-      className="min-h-screen w-full px-4 py-8 md:px-8 md:py-10"
-      style={{
-        background: "linear-gradient(90deg, #c8f000 0%, #00e5ff 100%)",
-      }}
-    >
-      <div className="mx-auto max-w-7xl">
-        <h1 className="mb-8 text-center text-3xl font-extrabold text-[#111] md:text-5xl">
+   <section
+  className="min-h-screen w-full px-4 py-8 md:px-8 md:py-10"
+  style={{
+    backgroundImage: "url('/assets/images/bg-chart.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+      <div className="mx-auto max-w-[1220px]">
+        <h1 className="mb-6 text-center text-3xl font-extrabold text-[#111] md:text-5xl">
           Real-Time Performance Tracking
         </h1>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.35fr_1fr]">
-          <div className="rounded-3xl bg-[#1a1a1a] p-5 text-white md:p-6">
+        <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1.2fr_1fr]">
+          <div className="h-full rounded-[4px] bg-[#0d1014] p-5 text-white md:p-6">
             <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-sm text-zinc-400">Profit</p>
-                <h2 className="text-4xl font-black tracking-tight md:text-5xl">
+                <h2 className="text-[42px] leading-none font-black tracking-tight md:text-[46px]">
                   ${profitDollars}
                   <span className="text-[#22c55e]">.{profitCents}</span>
                 </h2>
               </div>
-              <p className="text-xs text-zinc-400">Last Updated: {lastUpdated}</p>
+              <p className="text-xs text-zinc-400">
+                Last Updated: {lastUpdated}
+              </p>
             </div>
 
             <div className="mb-5 flex flex-wrap gap-2">
@@ -145,9 +158,9 @@ export default function PerformanceChart() {
                     key={filter}
                     type="button"
                     onClick={() => setActiveFilter(filter)}
-                    className={`rounded-full px-4 py-1.5 text-sm transition ${
+                    className={`rounded-full border border-zinc-500 px-3 py-1 text-sm transition ${
                       isActive
-                        ? "bg-white text-[#111] font-bold"
+                        ? "border-white bg-white text-[#111] font-bold"
                         : "bg-[#2b2b2b] text-zinc-300 hover:bg-[#333]"
                     }`}
                   >
@@ -157,12 +170,16 @@ export default function PerformanceChart() {
               })}
             </div>
 
-            <div className="h-72 w-full">
+            <div className="h-[290px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={CHART_DATA}
                   onMouseMove={(state) => {
-                    if (state && state.activePayload && state.activePayload[0]) {
+                    if (
+                      state &&
+                      state.activePayload &&
+                      state.activePayload[0]
+                    ) {
                       setHoveredDate(state.activePayload[0].payload.date);
                     }
                   }}
@@ -170,12 +187,18 @@ export default function PerformanceChart() {
                   <XAxis dataKey="date" hide />
                   <YAxis hide domain={["dataMin - 300", "dataMax + 300"]} />
                   <Tooltip cursor={false} content={<ProfitTooltip />} />
-                  <ReferenceLine x={hoveredDate} stroke="#ffffff" strokeWidth={1} />
-                  <Bar dataKey="value" radius={[4, 4, 4, 4]} barSize={10}>
+                  <ReferenceLine
+                    x={hoveredDate}
+                    stroke="#ffffff"
+                    strokeWidth={1}
+                  />
+                  <Bar dataKey="value" radius={[3, 3, 3, 3]} barSize={6}>
                     {CHART_DATA.map((entry) => (
                       <Cell
                         key={entry.date}
-                        fill={entry.date === hoveredDate ? "#ffffff" : "#3b3b3b"}
+                        fill={
+                          entry.date === hoveredDate ? "#ffffff" : "#3b3b3b"
+                        }
                       />
                     ))}
                   </Bar>
@@ -184,40 +207,64 @@ export default function PerformanceChart() {
             </div>
           </div>
 
-          <div className="rounded-3xl bg-[#111] p-5 text-white md:p-6">
-            <div className="mb-5">
-              <p className="text-sm text-zinc-400">Balance</p>
-              <h2 className="text-4xl font-black tracking-tight md:text-5xl">$11,940.43</h2>
+          <div className="flex h-full flex-col rounded-2xl p-2">
+            <div className="rounded-[4px] bg-[#0b0e12] p-4 text-white">
+              <div className="mb-4">
+                <p className="text-sm text-zinc-400">Balance</p>
+                <h2 className="text-[42px] leading-none font-black tracking-tight">
+                  $11,940.43
+                </h2>
+              </div>
+
+              <div className="mb-4 flex w-full gap-1.5">
+                {CURRENCY_ROWS.map((item) => (
+                  <div
+                    key={`${item.code}-line`}
+                    className="h-1 rounded-full"
+                    style={{
+                      backgroundColor: item.color,
+                      width: `${item.percent}%`,
+                      minWidth: "8%",
+                    }}
+                  />
+                ))}
+              </div>
+
+              <div className="grid grid-cols-5 gap-2">
+                {CURRENCY_ROWS.map((item) => (
+                  <div key={`${item.code}-label`} className="text-[15px]">
+                    <p className="font-bold" style={{ color: item.color }}>
+                      {item.code}
+                    </p>
+                    <p className="font-semibold text-zinc-100">{item.amount}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="space-y-3">
-              {CURRENCY_ROWS.map((item) => (
-                <div key={item.code}>
-                  <div className="mb-1 flex items-center justify-between text-sm">
-                    <span className="font-semibold">{item.code}</span>
-                    <span className="text-zinc-300">{item.amount}</span>
-                  </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-700">
-                    <div
-                      className="h-full rounded-full"
-                      style={{ width: `${item.percent}%`, backgroundColor: item.color }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="mt-3 grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2 sm:auto-rows-fr">
               {STAT_CARDS.map((card) => {
                 const Icon = card.icon;
                 return (
-                  <div key={card.title} className="rounded-2xl bg-[#1b1b1b] p-4">
-                    <div className="mb-2 flex items-center justify-between">
-                      <p className="text-xs text-zinc-400">{card.title}</p>
-                      <Icon size={16} className="text-zinc-300" />
+                  <div
+                    key={card.title}
+                    className="h-full rounded-[4px] bg-[#0b0e12] p-4 text-white"
+                  >
+                    <div className="mb-2 flex items-center gap-3">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-[2px] bg-zinc-600/50">
+                        <Icon size={14} className="text-zinc-100" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-zinc-400">{card.title}</p>
+                        <p className="text-[36px] leading-none font-black">
+                          {card.value}
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-xl font-bold">{card.value}</p>
-                    <p className="mt-1 text-xs font-semibold text-[#22c55e]">{card.badge}</p>
+                    <p className="mt-2 text-[28px] leading-none font-extrabold text-[#00e88b]">
+                      {card.badge}
+                    </p>
+                    <p className="mt-1 text-sm text-zinc-200">{card.detail}</p>
                   </div>
                 );
               })}
@@ -226,12 +273,7 @@ export default function PerformanceChart() {
         </div>
 
         <div className="mt-8 flex justify-center">
-          <button
-            type="button"
-            className="rounded-full border-2 border-[#111] bg-transparent px-8 py-3 text-sm font-bold text-[#111] transition hover:bg-[#111] hover:text-white"
-          >
-            Start Challenge
-          </button>
+          <ButtonGradient>Start Challenge</ButtonGradient>
         </div>
       </div>
     </section>
