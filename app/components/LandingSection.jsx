@@ -29,21 +29,30 @@ const LandingSection = () => {
     },
   ];
   return (
-    <section className="relative min-h-[calc(100vh-74px)] w-full overflow-hidden">
-      {/* Background Image */}
+    <section className="relative w-full overflow-hidden min-h-[860px] sm:min-h-[940px] md:min-h-[calc(100vh-74px)]">
+      {/* Desktop Background Image */}
       <Image
         src="/assets/images/hero-section.webp"
         alt="Hero background"
         width={1570}
         height={800}
-        className="absolute right-[-120px] min-h-[800px] -bottom-30 z-0 object-cover object-center scale-90"
+        className="absolute right-[-120px] min-h-[800px] -bottom-30 z-0 hidden object-cover object-center scale-90 md:block"
+      />
+
+      {/* Mobile Background Image */}
+      <Image
+        src="/assets/images/hero-mobile.webp"
+        alt="Hero mobile background"
+        fill
+        priority
+        className="absolute inset-0 z-0 object-cover object-bottom md:hidden"
       />
 
       {/* Content */}
-      <div className="relative z-20 mx-auto flex h-full w-full max-w-[1240px] items-start px-5 pt-20 md:px-8 md:pt-24">
+      <div className="relative z-20 mx-auto flex h-full w-full max-w-[1240px] items-start px-4 pt-6 sm:px-5 sm:pt-7 md:px-8 md:pt-24">
         <div className="max-w-[580px] text-white">
           <div
-            className="mb-8 inline-block p-[2px] rounded"
+            className="mb-5 inline-block rounded p-[2px] sm:mb-8"
             style={{
               border: "2px solid",
               borderImageSlice: 1,
@@ -52,21 +61,21 @@ const LandingSection = () => {
                 "linear-gradient(to right, #1CCDE6, #9ED473, #DBD633)",
             }}
           >
-            <div className=" inline-block font-semibold px-4 py-2 text-[12px] tracking-[3px] bg-gradient-to-r from-[#1CCDE6] via-[#9ED473] to-[#DBD633] bg-clip-text text-transparent">
+            <div className="inline-block bg-gradient-to-r from-[#1CCDE6] via-[#9ED473] to-[#DBD633] bg-clip-text px-3 py-2 text-[10px] font-semibold tracking-[2px] text-transparent sm:px-4 sm:text-[12px] sm:tracking-[3px]">
               THE LEADING PROP TRADING FIRM
             </div>
           </div>
 
-          <h1 className="mb-10 text-[48px] font-semibold leading-[58px] md:leading-[74px]">
+          <h1 className="mb-6 text-[32px] md:text-[48px] font-semibold leading-[1.08] sm:mb-10 md:leading-[74px]">
             Empowering Ambitious <br />
             Traders to Succeed
           </h1>
 
-          <ButtonGradient className="mb-10 px-8 py-3 text-[16px] font-medium">
+          <ButtonGradient className="mb-8 px-6 py-3 text-[16px] font-medium sm:mb-10 sm:px-8">
             Start Challenge
           </ButtonGradient>
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-5 text-[14px] text-gray-300">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-4 text-[16px] leading-6 text-gray-300 sm:gap-x-8 sm:gap-y-5 sm:text-[14px]">
             {featuresData.map((item, index) => (
               <div key={index} className="flex items-center gap-2">
                 <Image

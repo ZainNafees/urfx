@@ -30,8 +30,8 @@ const PayoutSection = () => {
 
   return (
     <section className="mx-auto w-full px-5 py-10 text-white md:px-20">
-       <div className="px-6 py-10 md:px-10">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+      <div className="px-6 py-10 md:px-10">
+        <div className="grid grid-cols-2 md:gap-8 gap-12 md:grid-cols-4">
           {payoutData.map((item) => (
             <div key={item.id} className="text-center">
               <div className="mx-auto mb-5 flex items-center justify-center">
@@ -40,13 +40,15 @@ const PayoutSection = () => {
                   alt={item.title}
                   width={100}
                   height={100}
-                  className="w-[100px] h-full object-contain"
+                  className="w-20 h-20 md:w-[100px] md:h-[100px] object-contain"
                 />
               </div>
-              <h3 className="text-[30px] font-semibold leading-tight">
+              <h3 className="text-xl sm:text-2xl md:text-[30px] font-semibold leading-tight">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm text-gray-400">{item.subtitle}</p>
+              <p className="mt-2 text-xs sm:text-sm md:text-base text-gray-400">
+                {item.subtitle}
+              </p>
             </div>
           ))}
         </div>
