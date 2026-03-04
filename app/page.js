@@ -7,6 +7,7 @@ import CertificateSection from "./components/CertificateSection";
 import ReliableCardsSection from "./components/ReliableCardsSection";
 import Community from "./components/Community";
 import PerformanceChart from "./components/PerformanceChart";
+import ChooseYourAccount from "./components/ChooseYourAccount";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
    <CertificateSection />
    <Community />
    <PerformanceChart />
+   <ChooseYourAccount />
    </div>
   );
 }
