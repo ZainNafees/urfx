@@ -5,6 +5,7 @@ import PayoutSection from "./components/PayoutSection";
 import VideoSection from "./components/VideoSection";
 import CertificateSection from "./components/CertificateSection";
 import ReliableCardsSection from "./components/ReliableCardsSection";
+import Community from "./components/Community";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
    <ReliableCardsSection />
    <TrustStrip />
    <CertificateSection />
+   <Community />
    </div>
   );
 }
