@@ -72,11 +72,11 @@ const Testimonial = () => {
       />
 
       {/* Heading */}
-      <div className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0">
-        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[52px] md:leading-[1.08]">
+      <div className="relative z-10 mx-auto max-w-[900px] px-5 text-center md:px-0">
+        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[48px] md:leading-[1.08]">
           Trusted by Traders All Around the World
         </h2>
-        <p className="mx-auto mt-4 max-w-[480px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
+        <p className="mx-auto mt-4 max-w-[560px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
           See why so many traders worldwide choose URFX as their preferred Prop
           Firm.
         </p>
@@ -84,10 +84,7 @@ const Testimonial = () => {
         {/* TrustAdvisor badge */}
         <div
           className="mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[15px] font-medium text-white"
-          style={{
-            border: "1px solid rgba(255,255,255,0.12)",
-            background: "rgba(255,255,255,0.04)",
-          }}
+          
         >
           Reviews provided by&nbsp;
           <span className="inline-flex items-center gap-1.5">
@@ -112,11 +109,7 @@ const Testimonial = () => {
           {testimonials.map((t, index) => {
             const isActive = activeMobileCard === index;
             return (
-              <div
-                key={t.id}
-                className="flex-none snap-center px-5"
-                style={{ width: "100%" }}
-              >
+              <div key={t.id} className="w-full flex-none snap-center px-5">
                 <TestimonialCard testimonial={t} forcedActive={isActive} />
               </div>
             );
@@ -164,7 +157,7 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
 
   return (
     <div
-      className="relative cursor-default"
+      className="relative h-full w-full cursor-default text-left"
       style={{
         padding: "1px",
       }}
@@ -172,7 +165,7 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
       onMouseLeave={() => setHovered(false)}
     >
       <article
-        className="relative flex h-full min-h-[220px] flex-col overflow-hidden p-5 md:min-h-[240px] md:p-6"
+        className="relative flex h-full w-full min-h-[220px] flex-col overflow-hidden p-5 text-left md:min-h-[240px] md:p-6"
         style={{
           background: isActive
             ? "linear-gradient(145deg, #1a2a1a 0%, #1c1c10 50%, #1a1a0a 100%)"
@@ -201,28 +194,28 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
         />
 
         {/* Content */}
-        <div className="relative z-20 flex h-full flex-col justify-between">
+        <div className="relative z-20 flex h-full flex-col justify-between text-left">
           <div>
-            <p className="text-[15px] font-semibold leading-[1.5] text-white md:text-[16px]">
+            <p className="text-left text-[15px] font-semibold leading-[1.5] text-white md:text-[16px]">
               "{testimonial.quote}"
             </p>
-            <p className="mt-3 text-[13px] leading-5 text-gray-400">
+            <p className="mt-3 text-left text-[13px] leading-5 text-gray-400">
               {testimonial.subtext}
             </p>
           </div>
 
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-5 flex items-center gap-3 text-left">
             <img
               src={testimonial.avatar}
               alt={testimonial.name}
               className="rounded-full object-cover"
               style={{ width: "40px", height: "40px" }}
             />
-            <div>
-              <p className="text-[14px] font-semibold text-white">
+            <div className="w-full text-left">
+              <p className="text-left text-[14px] font-semibold text-white">
                 {testimonial.name}
               </p>
-              <p className="text-[12px] text-gray-400">
+              <p className="text-left text-[12px] text-gray-400">
                 {testimonial.location}
               </p>
             </div>
@@ -232,28 +225,12 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
 
       {/* Corner accents — cyan left, yellow right */}
       <span
-        className="pointer-events-none absolute left-0 top-0 h-[2px] w-10 bg-[#1CCDE6]"
-        style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s ease" }}
+        className="pointer-events-none absolute bottom-0 left-0 top-0 w-[2px] bg-[#1CCDE6]"
+        style={{ opacity: isActive ? 1 : 0.55, transition: "opacity 0.3s ease" }}
       />
       <span
-        className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-[#1CCDE6]"
-        style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s ease" }}
-      />
-      <span
-        className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-10 bg-[#1CCDE6]"
-        style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s ease" }}
-      />
-      <span
-        className="pointer-events-none absolute right-0 top-0 h-[2px] w-10 bg-[#DBD633]"
-        style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s ease" }}
-      />
-      <span
-        className="pointer-events-none absolute right-0 top-0 h-full w-[2px] bg-[#DBD633]"
-        style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s ease" }}
-      />
-      <span
-        className="pointer-events-none absolute bottom-0 right-0 h-[2px] w-10 bg-[#DBD633]"
-        style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s ease" }}
+        className="pointer-events-none absolute bottom-0 right-0 top-0 w-[2px] bg-[#DBD633]"
+        style={{ opacity: isActive ? 1 : 0.55, transition: "opacity 0.3s ease" }}
       />
     </div>
   );
