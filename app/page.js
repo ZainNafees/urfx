@@ -17,7 +17,7 @@ import TradersTogether from "./components/TradersTogether";
 
 export default function Home() {
   return (
-   <div className="bg-black">
+   <div className="theme-shell">
    <Navbar />
    <LandingSection />
    <PayoutSection />

@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070a11;
+  --foreground: #f4f7fb;
+  --surface-1: #0b0f17;
+  --surface-2: #111827;
+  --border-muted: rgba(255, 255, 255, 0.14);
+  --text-muted: #b5becd;
+  --nav-bg: rgba(5, 7, 13, 0.9);
+  --nav-bg-solid: #05070d;
+  --nav-link: #e2e8f0;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.04);
+  --theme-toggle-border: rgba(255, 255, 255, 0.2);
+  --theme-toggle-text: #f8fafc;
 }
 
 @theme inline {
@@ -12,17 +22,153 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #0e1116;
+  --surface-1: #f7f9fc;
+  --surface-2: #eef2f7;
+  --border-muted: rgba(17, 24, 39, 0.14);
+  --text-muted: #4b5563;
+  --nav-bg: rgba(255, 255, 255, 0.93);
+  --nav-bg-solid: #ffffff;
+  --nav-link: #0f172a;
+  --theme-toggle-bg: #f4f6fa;
+  --theme-toggle-border: #d7dde8;
+  --theme-toggle-text: #111827;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Sora", "Space Grotesk", "Manrope", "Segoe UI", sans-serif;
+}
+
+.theme-shell {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.light-only {
+  display: none;
+}
+
+.dark-only {
+  display: block;
+}
+
+html[data-theme="light"] .light-only {
+  display: block;
+}
+
+html[data-theme="light"] .dark-only {
+  display: none;
+}
+
+html[data-theme="light"] .hero-content {
+  color: #0a0f19 !important;
+}
+
+html[data-theme="light"] .hero-features {
+  color: #374151 !important;
+}
+
+html[data-theme="light"] .hero-content h1 {
+  color: #0a0f19 !important;
+}
+
+html[data-theme="light"] .site-navbar {
+  border-bottom-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+}
+
+html[data-theme="light"] .bg-black,
+html[data-theme="light"] .bg-\[\#111111\],
+html[data-theme="light"] .bg-\[\#0d1014\],
+html[data-theme="light"] .bg-\[\#0b0e12\],
+html[data-theme="light"] .bg-\[\#2a2d31\],
+html[data-theme="light"] .bg-\[\#2b2b2b\],
+html[data-theme="light"] .trade-card {
+  background: var(--surface-1) !important;
+}
+
+html[data-theme="light"] .bg-white\/\[0\.08\],
+html[data-theme="light"] .bg-white\/10,
+html[data-theme="light"] .bg-white\/20 {
+  background: var(--surface-2) !important;
+}
+
+html[data-theme="light"] .border-white\/10,
+html[data-theme="light"] .border-zinc-500,
+html[data-theme="light"] .trade-card {
+  border-color: var(--border-muted) !important;
+}
+
+html[data-theme="light"] .text-white,
+html[data-theme="light"] .text-slate-200,
+html[data-theme="light"] .text-zinc-300 {
+  color: #101828 !important;
+}
+
+html[data-theme="light"] .text-white\/85,
+html[data-theme="light"] .text-white\/80,
+html[data-theme="light"] .text-white\/70,
+html[data-theme="light"] .text-white\/60,
+html[data-theme="light"] .text-\[\#B7B7B7\] {
+  color: var(--text-muted) !important;
+}
+
+html[data-theme="light"] .shadow-lg {
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.btn-gradient .btn-gradient-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(27, 175, 215, 0.16) 0%,
+    rgba(14, 18, 25, 0.9) 50%,
+    rgba(175, 196, 43, 0.16) 100%
+  );
+}
+
+.btn-gradient[data-variant="register"] .btn-gradient-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(36, 169, 206, 0.28) 0%,
+    rgba(104, 181, 66, 0.35) 45%,
+    rgba(171, 195, 42, 0.28) 100%
+  );
+}
+
+.btn-gradient .btn-gradient-hover {
+  background: linear-gradient(
+    135deg,
+    rgba(28, 205, 230, 0.22) 0%,
+    rgba(219, 214, 51, 0.22) 100%
+  );
+}
+
+html[data-theme="light"] .btn-gradient {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .btn-gradient .btn-gradient-bg {
+  background: linear-gradient(90deg, #2cc8e4 0%, #8be06f 48%, #d7e53a 100%);
+}
+
+html[data-theme="light"] .btn-gradient[data-variant="login"] .btn-gradient-bg {
+  background: linear-gradient(90deg, #28c6e2 0%, #88dd6f 52%, #d3e236 100%);
+}
+
+html[data-theme="light"] .btn-gradient[data-variant="register"] .btn-gradient-bg {
+  background: linear-gradient(90deg, #29c8e3 0%, #7fdc74 48%, #d9e539 100%);
+}
+
+html[data-theme="light"] .btn-gradient .btn-gradient-hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(17, 24, 39, 0.06) 100%
+  );
 }
 
 @keyframes frameRightToLeft {

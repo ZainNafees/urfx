@@ -84,7 +84,7 @@ const ReliableCardsSection = () => {
       />
       {/* Heading — has its own horizontal padding on mobile */}
       <div className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0">
-        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[56px] md:leading-[1.08]">
+        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[40px] md:leading-[1.08]">
           Trade with the Most
           <br />
           Reliable Prop Firm

@@ -90,7 +90,7 @@ const CertificateSection = () => {
 
       {/* Heading */}
       <div className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0">
-        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[56px] md:leading-[1.08]">
+        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[40px] md:leading-[1.08]">
           Certified Trader Achievements
         </h2>
         <p className="mx-auto mt-4 max-w-[650px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
