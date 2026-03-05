@@ -12,11 +12,11 @@ const Footer = () => {
           "linear-gradient(to right, #1CCDE6 0%, #9ED473 40%, #DBD633 100%)",
       }}
     >
-      <div className="max-w-screen-xl mx-auto px-10 py-10">
-        <div className="flex flex-row items-start gap-0">
-          {/* Column 1: Brand — ~22% */}
-          <div className="flex flex-col gap-4" style={{ width: "22%" }}>
-            {/* Logo */}
+      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-10">
+        <div className="flex flex-col gap-10 md:flex-row md:gap-0 md:items-start">
+
+          {/* Column 1 */}
+          <div className="flex flex-col gap-4 w-full md:w-[22%]">
             <div className="flex items-center gap-2">
               <Image
                 src="/assets/icons/logo-footer.png"
@@ -26,13 +26,11 @@ const Footer = () => {
               />
             </div>
 
-            {/* Company info */}
             <div className="text-black text-sm leading-relaxed">
               <p>URFX Global Trading Inc.</p>
               <p>Registered in Vancouver, Canada</p>
             </div>
 
-            {/* Contact */}
             <div className="flex flex-col gap-2 text-black text-sm mt-2">
               <a
                 href="mailto:support@urfx.io"
@@ -51,11 +49,11 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Spacer */}
-          <div style={{ width: "8%" }} />
+          {/* Spacer (only md and up) */}
+          <div className="hidden md:block md:w-[8%]" />
 
-          {/* Column 2: Quick Links — ~15% */}
-          <div className="flex flex-col gap-2" style={{ width: "15%" }}>
+          {/* Column 2 */}
+          <div className="flex flex-col gap-2 w-full md:w-[15%]">
             <p className="text-black font-bold text-sm mb-1">Quick Links</p>
             {[
               "Home",
@@ -75,8 +73,8 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Column 3: Legal — ~15% */}
-          <div className="flex flex-col gap-2" style={{ width: "15%" }}>
+          {/* Column 3 */}
+          <div className="flex flex-col gap-2 w-full md:w-[15%]">
             <p className="text-black font-bold text-sm mb-1">Legal</p>
             {[
               "Terms & Conditions",
@@ -94,18 +92,17 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Spacer */}
-          <div style={{ width: "3%" }} />
+          {/* Spacer (only md and up) */}
+          <div className="hidden md:block md:w-[3%]" />
 
-          {/* Column 4: Newsletter — ~37% */}
-          <div className="flex flex-col gap-4" style={{ width: "37%" }}>
-            <h3 className="text-black font-black text-3xl leading-tight">
+          {/* Column 4 */}
+          <div className="flex flex-col gap-4 w-full md:w-[37%]">
+            <h3 className="text-black font-black text-2xl md:text-3xl leading-tight">
               Subscribe to our
               <br />
               Newsletter
             </h3>
 
-            {/* Email input */}
             <input
               type="email"
               placeholder="Enter your email"
@@ -116,16 +113,16 @@ const Footer = () => {
               }}
             />
 
-            {/* Submit button */}
             <div>
               <button
-                className="bg-white text-black font-bold text-sm px-8 py-3 rounded-sm hover:bg-black hover:text-white transition-colors duration-200"
+                className="bg-white text-black font-bold text-sm px-8 py-3 rounded-sm hover:bg-black hover:text-white transition-colors duration-200 w-full sm:w-auto"
                 style={{ border: "2px solid #000" }}
               >
                 Submit
               </button>
             </div>
           </div>
+
         </div>
       </div>
     </footer>

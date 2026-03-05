@@ -12,6 +12,7 @@ import JoinTeam from "./components/JoinTeam";
 import Testimonial from "./components/Testimonial";
 import Faqs from "./components/Faqs";
 import Footer from "./components/Footer";
+import Revaloution from "./components/Revaloution";
 
 export default function Home() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
    <Community />
    <PerformanceChart />
    <ChooseYourAccount />
-
+    <Revaloution />
    <Testimonial />
    <JoinTeam />
    <Faqs />
