@@ -45,11 +45,11 @@ const CHART_DATA = [
 ];
 
 const CURRENCY_ROWS = [
-  { code: "USD", color: "#3b82f6", amount: "$1.2K", percent: 13 },
-  { code: "JPY", color: "#a855f7", amount: "$525", percent: 8 },
-  { code: "EUR", color: "#10b981", amount: "$9.2K", percent: 77 },
+  { code: "USD", color: "#a855f7", amount: "$1.2K", percent: 13 },
+  { code: "JPY", color: "#ef4444", amount: "$525", percent: 8 },
+  { code: "EUR", color: "#60a5fa", amount: "$9.2K", percent: 77 },
   { code: "GBP", color: "#f59e0b", amount: "$293", percent: 5 },
-  { code: "INR", color: "#ef4444", amount: "$881", percent: 10 },
+  { code: "INR", color: "#34d399", amount: "$881", percent: 10 },
 ];
 
 const STAT_CARDS = [
@@ -118,34 +118,32 @@ export default function PerformanceChart() {
     return () => clearInterval(timer);
   }, []);
 
-  const [profitDollars, profitCents] = (7223.43).toFixed(2).split(".");
-
   return (
-   <section
-  className="min-h-screen w-full px-4 py-8 md:px-8 md:py-10"
-  style={{
-    backgroundImage: "url('/assets/images/bg-chart.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
+    <section
+      className="min-h-screen w-full px-4 py-8 md:px-8 md:py-10"
+      style={{
+        backgroundImage: "url('/assets/images/bg-chart.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="mx-auto max-w-[1220px]">
-        <h1 className="mb-6 text-center text-3xl font-extrabold text-[#111] md:text-5xl">
+        <h1 className="mb-2 text-center text-3xl font-bold text-[#111] md:text-5xl">
           Real-Time Performance Tracking
         </h1>
+        <p className="text-gray-600 mb-10 text-center">Monitor your trading performance with advanced analytics and real-time statistics</p>
 
         <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1.2fr_1fr]">
-          <div className="h-full rounded-[4px] bg-[#0c0f13] p-5 text-[#f8fafc] md:p-6">
+          <div className="h-full rounded-[2px] border border-[#12161e] bg-[#05070b] p-5 text-[#f3f4f6] md:p-6">
             <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-sm text-zinc-400">Profit</p>
-                <h2 className="text-[42px] leading-none font-black tracking-tight md:text-[46px]">
-                  ${profitDollars}
-                  <span className="text-[#22c55e]">.{profitCents}</span>
+                <p className="text-[16px] leading-none text-[#7a7f87]">Profit</p>
+                <h2 className="mt-1 text-[42px] leading-none font-semibold tracking-[-0.03em] text-[#d8dbe1] md:text-[46px]">
+                  $7,223.43
                 </h2>
               </div>
-              <p className="text-xs text-zinc-400">
+              <p className="text-[13px] text-[#7a7f87]">
                 Last Updated: {lastUpdated}
               </p>
             </div>
@@ -158,10 +156,10 @@ export default function PerformanceChart() {
                     key={filter}
                     type="button"
                     onClick={() => setActiveFilter(filter)}
-                    className={`rounded-full border border-zinc-500 px-3 py-1 text-sm transition ${
+                    className={`h-10 rounded-full border px-4 text-[18px] font-medium transition ${
                       isActive
-                        ? "border-white bg-white text-[#111] font-bold"
-                        : "bg-[#262a30] text-zinc-300 hover:bg-[#30353d]"
+                        ? "border-white bg-white text-[#111827]"
+                        : "border-[#505560] bg-[#22262d] text-[#d1d5db] hover:bg-[#2b3038]"
                     }`}
                   >
                     {filter}
@@ -189,6 +187,12 @@ export default function PerformanceChart() {
                   <Tooltip cursor={false} content={<ProfitTooltip />} />
                   <ReferenceLine
                     x={hoveredDate}
+                    stroke="#d7e53a"
+                    strokeWidth={4}
+                    strokeOpacity={0.38}
+                  />
+                  <ReferenceLine
+                    x={hoveredDate}
                     stroke="#ffffff"
                     strokeWidth={1}
                   />
@@ -208,10 +212,10 @@ export default function PerformanceChart() {
           </div>
 
           <div className="flex h-full flex-col rounded-2xl p-2">
-            <div className="rounded-[4px] bg-[#090c10] p-4 text-[#f8fafc]">
+            <div className="rounded-[2px] border border-[#12161e] bg-[#05070b] p-4 text-[#f8fafc]">
               <div className="mb-4">
-                <p className="text-sm text-zinc-400">Balance</p>
-                <h2 className="text-[42px] leading-none font-black tracking-tight">
+                <p className="text-[16px] leading-none text-[#7a7f87]">Balance</p>
+                <h2 className="mt-1 text-[42px] leading-none font-semibold tracking-[-0.03em] text-[#d8dbe1]">
                   $11,940.43
                 </h2>
               </div>
@@ -232,11 +236,11 @@ export default function PerformanceChart() {
 
               <div className="grid grid-cols-5 gap-2">
                 {CURRENCY_ROWS.map((item) => (
-                  <div key={`${item.code}-label`} className="text-[15px]">
+                  <div key={`${item.code}-label`} className="text-[15px] leading-none">
                     <p className="font-bold" style={{ color: item.color }}>
                       {item.code}
                     </p>
-                    <p className="font-semibold text-zinc-100">{item.amount}</p>
+                    <p className="mt-1 font-semibold text-zinc-100">{item.amount}</p>
                   </div>
                 ))}
               </div>
@@ -248,23 +252,23 @@ export default function PerformanceChart() {
                 return (
                   <div
                     key={card.title}
-                    className="h-full rounded-[4px] bg-[#090c10] p-4 text-[#f8fafc]"
+                    className="h-full rounded-[2px] border border-[#12161e] bg-[#05070b] p-4 text-[#f8fafc]"
                   >
                     <div className="mb-2 flex items-center gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-[2px] bg-zinc-600/50">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-[2px] bg-zinc-300/20">
                         <Icon size={14} className="text-zinc-100" />
                       </div>
                       <div>
-                        <p className="text-sm text-zinc-400">{card.title}</p>
-                        <p className="text-[36px] leading-none font-black">
+                        <p className="text-[15px] leading-none text-zinc-400">{card.title}</p>
+                        <p className="text-[32px] leading-none font-semibold tracking-[-0.02em] text-[#f3f4f6]">
                           {card.value}
                         </p>
                       </div>
                     </div>
-                    <p className="mt-2 text-[28px] leading-none font-extrabold text-[#00e88b]">
+                    <p className="mt-2 text-[18px] leading-none font-semibold text-[#00e88b]">
                       {card.badge}
                     </p>
-                    <p className="mt-1 text-sm text-zinc-200">{card.detail}</p>
+                    <p className="mt-1 text-[14px] text-zinc-200">{card.detail}</p>
                   </div>
                 );
               })}
