@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonGradient from "./ButtonGradient";
 
 const faqs = [
@@ -37,7 +37,7 @@ const faqs = [
   },
 ];
 
-const FaqItem = ({ faq, isOpen, onToggle }) => {
+const FaqItem = ({ faq, isOpen, onToggle, theme }) => {
   return (
     <div
       className="relative cursor-pointer"
@@ -47,9 +47,14 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
       <div
         className="relative overflow-hidden"
         style={{
-          background: isOpen
-            ? "linear-gradient(135deg, rgba(28,205,230,0.16) 0%, rgba(31,38,18,0.96) 56%, rgba(219,214,51,0.14) 100%)"
-            : "linear-gradient(180deg, #17191c 0%, #101215 100%)",
+          background:
+            theme === "light"
+              ? isOpen
+                ? "linear-gradient(90deg, rgba(28,205,230,0.34) 0%, rgba(219,214,51,0.42) 100%)"
+                : "transparent"
+              : isOpen
+                ? "linear-gradient(135deg, rgba(28,205,230,0.16) 0%, rgba(31,38,18,0.96) 56%, rgba(219,214,51,0.14) 100%)"
+                : "linear-gradient(180deg, #17191c 0%, #101215 100%)",
           transition: "background 0.3s ease",
         }}
       >
@@ -58,16 +63,30 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(120deg, rgba(28,205,230,0.22) 0%, rgba(17,20,24,0.52) 48%, rgba(219,214,51,0.2) 100%)",
+                theme === "light"
+                  ? "linear-gradient(120deg, rgba(28,205,230,0.18) 0%, rgba(255,255,255,0.14) 46%, rgba(219,214,51,0.24) 100%)"
+                  : "linear-gradient(120deg, rgba(28,205,230,0.22) 0%, rgba(17,20,24,0.52) 48%, rgba(219,214,51,0.2) 100%)",
             }}
           />
         )}
 
         <div className="relative z-10 flex items-center justify-between px-6 py-5">
-          <h3 className="pr-6 text-[15px] font-semibold leading-snug text-white md:text-[17px]">
+          <h3
+            className={`pr-6 text-[15px] font-semibold leading-snug md:text-[17px] ${
+              theme === "light"
+                ? "text-[#101828]"
+                : "text-white"
+            }`}
+          >
             {faq.question}
           </h3>
-          <span className="flex-shrink-0 text-[22px] font-light leading-none text-white">
+          <span
+            className={`flex-shrink-0 text-[30px] font-light leading-none ${
+              theme === "light"
+                ? "text-[#111827]"
+                : "text-white"
+            }`}
+          >
             {isOpen ? "x" : "+"}
           </span>
         </div>
@@ -76,7 +95,13 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
           className="overflow-hidden transition-all duration-300 ease-in-out"
           style={{ maxHeight: isOpen ? "200px" : "0px" }}
         >
-          <p className="relative z-10 px-6 pb-5 text-[14px] leading-6 text-gray-300 md:text-[15px]">
+          <p
+            className={`relative z-10 px-6 pb-5 text-[14px] leading-6 md:text-[15px] ${
+              theme === "light"
+                ? "text-[#374151]"
+                : "text-gray-300"
+            }`}
+          >
             {faq.answer}
           </p>
         </div>
@@ -84,7 +109,10 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
 
       <span
         className="pointer-events-none absolute left-0 top-0 z-30 h-[2px] w-10 bg-[#1CCDE6]"
-        style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
+        style={{
+          opacity: isOpen ? 1 : 0,
+          transition: "opacity 0.3s ease",
+        }}
       />
       <span
         className="pointer-events-none absolute left-0 top-0 z-30 h-full w-[2px] bg-[#1CCDE6]"
@@ -111,26 +139,54 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
 };
 
 const Faqs = () => {
+  const [theme, setTheme] = useState("dark");
   const [openId, setOpenId] = useState(1);
+
+  useEffect(() => {
+    const updateTheme = () => {
+      const attrTheme = document.documentElement.getAttribute("data-theme");
+      setTheme(attrTheme === "light" ? "light" : "dark");
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const toggle = (id) => {
     setOpenId((prev) => (prev === id ? null : id));
   };
 
   return (
-    <section className="relative mx-auto w-full max-w-[1240px] py-14 text-white md:px-8 md:py-20">
+    <section
+      className={`relative mx-auto w-full max-w-[1240px] py-14 md:px-8 md:py-20 ${
+        theme === "light" ? "text-[#101828]" : "text-white"
+      }`}
+    >
       <div
         className="pointer-events-none absolute left-1/2 top-10 h-64 w-64 -translate-x-1/2 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(28,205,230,0.12) 0%, rgba(0,0,0,0) 72%)",
+            theme === "light"
+              ? "radial-gradient(circle, rgba(28,205,230,0.16) 0%, rgba(0,0,0,0) 72%)"
+              : "radial-gradient(circle, rgba(28,205,230,0.12) 0%, rgba(0,0,0,0) 72%)",
         }}
       />
       <div
         className="pointer-events-none absolute bottom-20 left-1/4 h-56 w-56 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(219,214,51,0.10) 0%, rgba(0,0,0,0) 72%)",
+            theme === "light"
+              ? "radial-gradient(circle, rgba(219,214,51,0.12) 0%, rgba(0,0,0,0) 72%)"
+              : "radial-gradient(circle, rgba(219,214,51,0.10) 0%, rgba(0,0,0,0) 72%)",
         }}
       />
 
@@ -138,7 +194,11 @@ const Faqs = () => {
         <h2 className="text-[30px] font-bold leading-[1.1] md:text-[52px] md:leading-[1.08]">
           Our Most Asked Questions
         </h2>
-        <p className="mx-auto mt-4 max-w-[500px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
+        <p
+          className={`mx-auto mt-4 max-w-[500px] text-[14px] leading-6 md:mt-5 md:text-[15px] ${
+            theme === "light" ? "text-[#6b7280]" : "text-gray-400"
+          }`}
+        >
           Check out our most frequently asked questions here for helpful
           insights and answers to common queries about our company and
           opportunities.
@@ -152,6 +212,7 @@ const Faqs = () => {
             faq={faq}
             isOpen={openId === faq.id}
             onToggle={() => toggle(faq.id)}
+            theme={theme}
           />
         ))}
       </div>

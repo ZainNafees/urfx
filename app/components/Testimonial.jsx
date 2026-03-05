@@ -34,6 +34,7 @@ const testimonials = [
 
 const Testimonial = () => {
   const mobileTrackRef = useRef(null);
+  const [theme, setTheme] = useState("dark");
   const [activeMobileCard, setActiveMobileCard] = useState(0);
 
   useEffect(() => {
@@ -51,23 +52,48 @@ const Testimonial = () => {
     return () => track.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const updateTheme = () => {
+      const attrTheme = document.documentElement.getAttribute("data-theme");
+      setTheme(attrTheme === "light" ? "light" : "dark");
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <section
-      className="relative mx-auto w-full max-w-[1240px] py-14 text-white md:px-8 md:py-20"
+      className={`relative mx-auto w-full max-w-[1240px] py-14 md:px-8 md:py-20 ${
+        theme === "light" ? "text-[#0f172a]" : "text-white"
+      }`}
     >
       {/* Background glows */}
       <div
         className="pointer-events-none absolute -left-16 top-20 h-72 w-72 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(28,205,230,0.15) 0%, rgba(0,0,0,0) 72%)",
+            theme === "light"
+              ? "radial-gradient(circle, rgba(28,205,230,0.2) 0%, rgba(0,0,0,0) 72%)"
+              : "radial-gradient(circle, rgba(28,205,230,0.15) 0%, rgba(0,0,0,0) 72%)",
         }}
       />
       <div
         className="pointer-events-none absolute right-0 bottom-20 h-72 w-72 blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(219,214,51,0.12) 0%, rgba(0,0,0,0) 72%)",
+            theme === "light"
+              ? "radial-gradient(circle, rgba(219,214,51,0.16) 0%, rgba(0,0,0,0) 72%)"
+              : "radial-gradient(circle, rgba(219,214,51,0.12) 0%, rgba(0,0,0,0) 72%)",
         }}
       />
 
@@ -76,17 +102,29 @@ const Testimonial = () => {
         <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[48px] md:leading-[1.08]">
           Trusted by Traders All Around the World
         </h2>
-        <p className="mx-auto mt-4 max-w-[560px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
+        <p
+          className={`mx-auto mt-4 max-w-[560px] text-[14px] leading-6 md:mt-5 md:text-[15px] ${
+            theme === "light" ? "text-[#6b7280]" : "text-gray-400"
+          }`}
+        >
           See why so many traders worldwide choose URFX as their preferred Prop
           Firm.
         </p>
 
         {/* TrustAdvisor badge */}
         <div
-          className="mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[15px] font-medium text-white"
+          className={`mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[15px] font-medium ${
+            theme === "light" ? "text-[#0f172a]" : "text-white"
+          }`}
           style={{
-            border: "1px solid rgba(255,255,255,0.12)",
-            background: "rgba(255,255,255,0.04)",
+            border:
+              theme === "light"
+                ? "1px solid rgba(15,23,42,0.12)"
+                : "1px solid rgba(255,255,255,0.12)",
+            background:
+              theme === "light"
+                ? "rgba(255,255,255,0.85)"
+                : "rgba(255,255,255,0.04)",
           }}
         >
           Reviews provided by&nbsp;
@@ -117,7 +155,11 @@ const Testimonial = () => {
                 className="flex-none snap-center px-5"
                 style={{ width: "100%" }}
               >
-                <TestimonialCard testimonial={t} forcedActive={isActive} />
+                <TestimonialCard
+                  testimonial={t}
+                  forcedActive={isActive}
+                  theme={theme}
+                />
               </div>
             );
           })}
@@ -140,7 +182,11 @@ const Testimonial = () => {
                 height: "6px",
                 width: activeMobileCard === i ? "28px" : "12px",
                 background:
-                  activeMobileCard === i ? "#1CCDE6" : "rgba(255,255,255,0.3)",
+                  activeMobileCard === i
+                    ? "#1CCDE6"
+                    : theme === "light"
+                      ? "rgba(15,23,42,0.25)"
+                      : "rgba(255,255,255,0.3)",
               }}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -151,14 +197,19 @@ const Testimonial = () => {
       {/* ── DESKTOP GRID ── */}
       <div className="relative z-10 mt-12 hidden grid-cols-3 gap-5 md:grid">
         {testimonials.map((t) => (
-          <TestimonialCard key={t.id} testimonial={t} forcedActive={false} />
+          <TestimonialCard
+            key={t.id}
+            testimonial={t}
+            forcedActive={false}
+            theme={theme}
+          />
         ))}
       </div>
     </section>
   );
 };
 
-const TestimonialCard = ({ testimonial, forcedActive }) => {
+const TestimonialCard = ({ testimonial, forcedActive, theme }) => {
   const [hovered, setHovered] = useState(false);
   const isActive = forcedActive || hovered;
 
@@ -174,9 +225,15 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
       <article
         className="relative flex h-full min-h-[220px] flex-col overflow-hidden p-5 md:min-h-[240px] md:p-6"
         style={{
-          background: isActive
-            ? "linear-gradient(145deg, #1a2a1a 0%, #1c1c10 50%, #1a1a0a 100%)"
-            : "linear-gradient(180deg, #1b1b1b 0%, #0f0f0f 100%)",
+          background:
+            theme === "light"
+              ? isActive
+                ? "linear-gradient(135deg, #f7fcff 0%, #f1f8e8 100%)"
+                : "linear-gradient(180deg, #ffffff 0%, #f8fbff 100%)"
+              : isActive
+                ? "linear-gradient(145deg, #1a2a1a 0%, #1c1c10 50%, #1a1a0a 100%)"
+                : "linear-gradient(180deg, #1b1b1b 0%, #0f0f0f 100%)",
+          border: theme === "light" ? "1px solid #d7e0ea" : "1px solid rgba(255,255,255,0.08)",
           transition: "background 0.3s ease",
         }}
       >
@@ -185,7 +242,9 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(120deg, rgba(28,205,230,0.18) 0%, rgba(17,20,24,0.5) 45%, rgba(219,214,51,0.18) 100%)",
+              theme === "light"
+                ? "linear-gradient(120deg, rgba(28,205,230,0.16) 0%, rgba(255,255,255,0.05) 45%, rgba(219,214,51,0.2) 100%)"
+                : "linear-gradient(120deg, rgba(28,205,230,0.18) 0%, rgba(17,20,24,0.5) 45%, rgba(219,214,51,0.18) 100%)",
             opacity: isActive ? 1 : 0,
             transition: "opacity 0.3s ease",
           }}
@@ -194,7 +253,9 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
           className="absolute inset-0 z-10"
           style={{
             background:
-              "linear-gradient(135deg, rgba(28,205,230,0.12) 0%, rgba(219,214,51,0.12) 100%)",
+              theme === "light"
+                ? "linear-gradient(135deg, rgba(28,205,230,0.1) 0%, rgba(219,214,51,0.14) 100%)"
+                : "linear-gradient(135deg, rgba(28,205,230,0.12) 0%, rgba(219,214,51,0.12) 100%)",
             opacity: isActive ? 1 : 0,
             transition: "opacity 0.3s ease",
           }}
@@ -203,10 +264,18 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
         {/* Content */}
         <div className="relative z-20 flex h-full flex-col justify-between">
           <div>
-            <p className="text-[15px] font-semibold leading-[1.5] text-white md:text-[16px]">
+            <p
+              className={`text-[15px] font-semibold leading-[1.5] md:text-[16px] ${
+                theme === "light" ? "text-[#0f172a]" : "text-white"
+              }`}
+            >
               "{testimonial.quote}"
             </p>
-            <p className="mt-3 text-[13px] leading-5 text-gray-400">
+            <p
+              className={`mt-3 text-[13px] leading-5 ${
+                theme === "light" ? "text-[#64748b]" : "text-gray-400"
+              }`}
+            >
               {testimonial.subtext}
             </p>
           </div>
@@ -219,10 +288,18 @@ const TestimonialCard = ({ testimonial, forcedActive }) => {
               style={{ width: "40px", height: "40px" }}
             />
             <div>
-              <p className="text-[14px] font-semibold text-white">
+              <p
+                className={`text-[14px] font-semibold ${
+                  theme === "light" ? "text-[#0f172a]" : "text-white"
+                }`}
+              >
                 {testimonial.name}
               </p>
-              <p className="text-[12px] text-gray-400">
+              <p
+                className={`text-[12px] ${
+                  theme === "light" ? "text-[#64748b]" : "text-gray-400"
+                }`}
+              >
                 {testimonial.location}
               </p>
             </div>

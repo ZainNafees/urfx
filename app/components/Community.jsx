@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import ButtonGradient from "./ButtonGradient";
 
@@ -19,8 +22,33 @@ const statCards = [
 ];
 
 const Community = () => {
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    const updateTheme = () => {
+      const attrTheme = document.documentElement.getAttribute("data-theme");
+      setTheme(attrTheme === "light" ? "light" : "dark");
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="mx-auto w-full max-w-[1240px] px-5 py-36 text-white md:px-8">
+    <section
+      className={`mx-auto w-full max-w-[1240px] px-5 py-10 md:px-8 ${
+        theme === "light" ? "text-[#111827]" : "text-white"
+      }`}
+    >
       <h2 className="text-center text-[20px] font-bold uppercase tracking-wide md:text-[28px]">
         URFX Community and Support
       </h2>
@@ -29,40 +57,52 @@ const Community = () => {
         <div className="grid flex-1 grid-cols-2 gap-4 sm:grid-cols-2">
           {statCards.map((item) => (
             <article
-  key={item.id}
-  className="
-    flex flex-col sm:flex-row
-    items-center sm:items-center
-    text-center sm:text-left
-    gap-4 sm:gap-0
-    min-h-[150px] sm:min-h-[164px]
-    bg-[linear-gradient(120deg,#1f2528_0%,#15181b_100%)]
-    px-5 py-6
-  "
->
-  {/* Text Section */}
-  <div className="flex-1">
-    <h3 className="text-[28px] sm:text-[40px] font-semibold leading-none">
-      {item.value}
-    </h3>
-    <p className="mt-2 sm:mt-3 text-[14px] sm:text-[20px] text-gray-400">
-      {item.label}
-    </p>
-  </div>
+              key={item.id}
+              className={`
+                flex flex-col sm:flex-row
+                items-center sm:items-center
+                text-center sm:text-left
+                gap-4 sm:gap-0
+                min-h-[150px] sm:min-h-[164px]
+                px-5 py-6
+                ${
+                  theme === "light"
+                    ? "bg-[linear-gradient(90deg,#9fe5ee_0%,#dce5a3_100%)]"
+                    : "bg-[linear-gradient(120deg,#1f2528_0%,#15181b_100%)]"
+                }
+              `}
+            >
+              {/* Text Section */}
+              <div className="flex-1">
+                <h3
+                  className={`text-[28px] sm:text-[40px] font-semibold leading-none ${
+                    theme === "light" ? "text-[#0b1220]" : "text-white"
+                  }`}
+                >
+                  {item.value}
+                </h3>
+                <p
+                  className={`mt-2 sm:mt-3 text-[14px] sm:text-[20px] ${
+                    theme === "light" ? "text-[#475569]" : "text-gray-400"
+                  }`}
+                >
+                  {item.label}
+                </p>
+              </div>
 
-  {/* Image */}
-  <Image
-    src={item.img}
-    alt={item.label}
-    width={110}
-    height={110}
-    className="
-      h-[70px] w-[70px]
-      sm:h-[110px] sm:w-[110px]
-      object-contain
-    "
-  />
-</article>
+              {/* Image */}
+              <Image
+                src={item.img}
+                alt={item.label}
+                width={110}
+                height={110}
+                className="
+                  h-[70px] w-[70px]
+                  sm:h-[110px] sm:w-[110px]
+                  object-contain
+                "
+              />
+            </article>
           ))}
         </div>
 

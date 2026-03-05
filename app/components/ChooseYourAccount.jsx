@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonGradient from "./ButtonGradient";
-import { ArrowDown, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const phaseData = {
   "Phase 1": [
@@ -63,26 +63,70 @@ const platforms = [
 ];
 
 export default function ChooseYourAccount() {
+  const [theme, setTheme] = useState("dark");
   const [fundingType, setFundingType] = useState("Two Phase");
-  const [selectedPlatform, setSelectedPlatform] = useState("MetaTrader 4");
+  const [selectedPlatform, setSelectedPlatform] = useState("/assets/icons/mt4.png");
   const [activeTab, setActiveTab] = useState("Phase 1");
 
+  useEffect(() => {
+    const updateTheme = () => {
+      const attrTheme = document.documentElement.getAttribute("data-theme");
+      setTheme(attrTheme === "light" ? "light" : "dark");
+    };
+
+    updateTheme();
+
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-[#111111] px-4 py-10 text-white sm:px-6 lg:px-10">
-      <div className="pointer-events-none absolute  inset-0 bg-[radial-gradient(circle_at_78%_55%,rgba(157,240,40,0.22),transparent_38%),radial-gradient(circle_at_25%_80%,rgba(12,95,46,0.28),transparent_46%)]" />
+    <section
+      className={`relative overflow-hidden px-4 py-10 sm:px-6 lg:px-10 ${
+        theme === "light" ? "bg-[#f5f8fc]" : "bg-[#111111] text-white"
+      }`}
+    >
+      <div
+        className={`pointer-events-none absolute inset-0 ${
+          theme === "light"
+            ? "bg-[radial-gradient(circle_at_78%_55%,rgba(157,240,40,0.08),transparent_38%),radial-gradient(circle_at_25%_80%,rgba(12,95,46,0.08),transparent_46%)]"
+            : "bg-[radial-gradient(circle_at_78%_55%,rgba(157,240,40,0.22),transparent_38%),radial-gradient(circle_at_25%_80%,rgba(12,95,46,0.28),transparent_46%)]"
+        }`}
+      />
 
       <div className="relative mx-auto w-full max-w-6xl mt-16">
-        <h2 className="text-4xl font-semibold tracking-tight text-center sm:text-5xl">
+        <h2
+          className={`text-4xl font-semibold tracking-tight text-center sm:text-5xl ${
+            theme === "light" ? "text-[#0f172a]" : "text-white"
+          }`}
+        >
           Choose Your Account
         </h2>
-        <p className="mt-2 text-sm text-white/60 text-center sm:text-base">
+        <p
+          className={`mt-2 text-sm text-center sm:text-base ${
+            theme === "light" ? "text-[#475569]" : "text-white/60"
+          }`}
+        >
           Trade the way you want, how you want, for as long as you want...
         </p>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.95fr]">
           <div className="space-y-7">
             <div>
-              <p className="mb-3 text-xl font-semibold">Funding Type:</p>
+              <p
+                className={`mb-3 text-xl font-semibold ${
+                  theme === "light" ? "text-[#0f172a]" : "text-white"
+                }`}
+              >
+                Funding Type:
+              </p>
               <div className="grid grid-cols-2 gap-3">
                 {["Two Phase", "Instant Funding"].map((item) => {
                   const isActive = fundingType === item;
@@ -93,8 +137,12 @@ export default function ChooseYourAccount() {
                       onClick={() => setFundingType(item)}
                       className={`h-14 rounded-md border text-lg font-semibold transition ${
                         isActive
-                          ? "border-[#c8f000] bg-[#435819] text-white"
-                          : "border-transparent bg-white/10 text-white/85 hover:bg-white/15"
+                          ? theme === "light"
+                            ? "border-[#95cf2b] bg-[#def7b4] text-[#1e2d0a]"
+                            : "border-[#c8f000] bg-[#435819] text-white"
+                          : theme === "light"
+                            ? "border-[#d5deea] bg-white text-[#1f2937] hover:bg-[#f7f9fc]"
+                            : "border-transparent bg-white/10 text-white/85 hover:bg-white/15"
                       }`}
                     >
                       {item}
@@ -105,7 +153,13 @@ export default function ChooseYourAccount() {
             </div>
 
             <div>
-              <p className="mb-3 text-xl font-semibold">Trading Platform:</p>
+              <p
+                className={`mb-3 text-xl font-semibold ${
+                  theme === "light" ? "text-[#0f172a]" : "text-white"
+                }`}
+              >
+                Trading Platform:
+              </p>
               <div className="grid grid-cols-2 gap-3">
                 {platforms.map((item) => {
                   const isActive = selectedPlatform === item.logo;
@@ -119,10 +173,16 @@ export default function ChooseYourAccount() {
                       disabled={item.disabled}
                       className={`relative h-14 rounded-md border px-4 flex items-center justify-center transition ${
                         item.disabled
-                          ? "cursor-not-allowed border-white/10 bg-white/5"
+                          ? theme === "light"
+                            ? "cursor-not-allowed border-[#e2e8f0] bg-[#f8fafc]"
+                            : "cursor-not-allowed border-white/10 bg-white/5"
                           : isActive
-                            ? "border-[#c8f000] bg-[#26381b]"
-                            : "border-white/10 bg-white/10 hover:bg-white/15"
+                            ? theme === "light"
+                              ? "border-[#95cf2b] bg-[#eefbd8]"
+                              : "border-[#c8f000] bg-[#26381b]"
+                            : theme === "light"
+                              ? "border-[#d5deea] bg-white hover:bg-[#f7f9fc]"
+                              : "border-white/10 bg-white/10 hover:bg-white/15"
                       }`}
                     >
                       <img
@@ -143,7 +203,9 @@ export default function ChooseYourAccount() {
                             background: "rgba(255,255,255,0.05)",
                             border: "1px solid transparent",
                             backgroundImage:
-                              "linear-gradient(#111, #111), linear-gradient(to right, #00e5ff, #c8f000)",
+                              theme === "light"
+                                ? "linear-gradient(#fff, #fff), linear-gradient(to right, #00b7d4, #8ecf2f)"
+                                : "linear-gradient(#111, #111), linear-gradient(to right, #00e5ff, #c8f000)",
                             backgroundOrigin: "border-box",
                             backgroundClip: "padding-box, border-box",
                           }}
@@ -158,8 +220,20 @@ export default function ChooseYourAccount() {
             </div>
 
             <div>
-              <p className="mb-3 text-xl font-semibold">Account Size:</p>
-              <div className="flex h-14 items-center justify-between rounded-md border border-[#c8f000] bg-gradient-to-r from-[#0f3a3f] to-[#495f19] px-4 text-3xl font-semibold sm:text-[34px]">
+              <p
+                className={`mb-3 text-xl font-semibold ${
+                  theme === "light" ? "text-[#0f172a]" : "text-white"
+                }`}
+              >
+                Account Size:
+              </p>
+              <div
+                className={`flex h-14 items-center justify-between rounded-md border px-4 text-3xl font-semibold sm:text-[34px] ${
+                  theme === "light"
+                    ? "border-[#93cd2d] bg-gradient-to-r from-[#dff6fb] to-[#eef8d2] text-[#0f172a]"
+                    : "border-[#c8f000] bg-gradient-to-r from-[#0f3a3f] to-[#495f19]"
+                }`}
+              >
                 <span>50,000</span>
                 <ChevronDown />
               </div>
@@ -167,8 +241,20 @@ export default function ChooseYourAccount() {
 
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="text-xl font-semibold">Fee</p>
-                <p className="mt-1 text-5xl font-bold">$59.00</p>
+                <p
+                  className={`text-xl font-semibold ${
+                    theme === "light" ? "text-[#0f172a]" : "text-white"
+                  }`}
+                >
+                  Fee
+                </p>
+                <p
+                  className={`mt-1 text-5xl font-bold ${
+                    theme === "light" ? "text-[#0f172a]" : "text-white"
+                  }`}
+                >
+                  $59.00
+                </p>
               </div>
               <ButtonGradient
                 type="button"
@@ -179,10 +265,20 @@ export default function ChooseYourAccount() {
             </div>
           </div>
 
-          <div className="rounded-md bg-gradient-to-br from-[#DBD633] via-[#9ED473] to-[#1CCDE6] p-4 text-black sm:p-5">
+          <div
+            className={`rounded-md p-4 sm:p-5 ${
+              theme === "light"
+                ? "bg-[linear-gradient(135deg,#d7de45_0%,#98ce72_48%,#58cbc9_100%)] text-[#0f172a]"
+                : "bg-gradient-to-br from-[#DBD633] via-[#9ED473] to-[#1CCDE6] text-black"
+            }`}
+          >
             <h3 className="text-4xl font-bold">50,000 Account</h3>
 
-            <div className="mt-4 grid grid-cols-3 rounded-sm bg-white/20 p-1">
+            <div
+              className={`mt-4 grid grid-cols-3 rounded-sm p-1 ${
+                theme === "light" ? "bg-[rgba(255,255,255,0.2)]" : "bg-white/20"
+              }`}
+            >
               {["Phase 1", "Phase 2", "Funded"].map((tab) => {
                 const isActive = activeTab === tab;
                 return (
@@ -192,8 +288,12 @@ export default function ChooseYourAccount() {
                     onClick={() => setActiveTab(tab)}
                     className={`h-11 rounded-sm text-lg font-semibold transition ${
                       isActive
-                        ? "bg-white text-black shadow-sm"
-                        : "text-black/75 hover:bg-white/35"
+                        ? theme === "light"
+                          ? "bg-white text-[#0f172a] shadow-sm"
+                          : "bg-white text-black shadow-sm"
+                        : theme === "light"
+                          ? "text-[#1f2937] hover:bg-white/20"
+                          : "text-black/75 hover:bg-white/35"
                     }`}
                   >
                     {tab}
@@ -208,8 +308,18 @@ export default function ChooseYourAccount() {
                   key={label}
                   className="flex items-start justify-between gap-4 text-lg sm:text-xl"
                 >
-                  <span className="text-black/65">{label}</span>
-                  <span className="text-right font-semibold">{value}</span>
+                  <span
+                    className={theme === "light" ? "text-[#2f4a2f]" : "text-black/65"}
+                  >
+                    {label}
+                  </span>
+                  <span
+                    className={`text-right font-semibold ${
+                      theme === "light" ? "text-[#050b16]" : "text-black"
+                    }`}
+                  >
+                    {value}
+                  </span>
                 </div>
               ))}
             </div>

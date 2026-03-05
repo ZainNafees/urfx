@@ -37,7 +37,7 @@ export default function Navbar() {
           <Image
             src={
               theme === "light"
-                ? "/assets/icons/logo-footer.png"
+                ? "/assets/icons/nav-logo-dark.png"
                 : "/assets/icons/logo-header.svg"
             }
             alt="URFX logo"
