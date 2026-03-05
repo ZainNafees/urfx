@@ -8,6 +8,7 @@ import ReliableCardsSection from "./components/ReliableCardsSection";
 import Community from "./components/Community";
 import PerformanceChart from "./components/PerformanceChart";
 import ChooseYourAccount from "./components/ChooseYourAccount";
+import Testimonial from "./components/Testimonial";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
    <Community />
    <PerformanceChart />
    <ChooseYourAccount />
+   <Testimonial />
    </div>
   );
 }
