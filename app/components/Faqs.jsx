@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ButtonGradient from "./ButtonGradient";
 
 const faqs = [
   {
@@ -29,7 +30,8 @@ const faqs = [
   },
   {
     id: 5,
-    question: "Do you charge any other fees other than the initial assessment cost?",
+    question:
+      "Do you charge any other fees other than the initial assessment cost?",
     answer:
       "No. The only fee is the one-time assessment cost. There are no hidden charges, monthly subscriptions, or additional fees throughout the evaluation or funded phase.",
   },
@@ -39,53 +41,37 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
   return (
     <div
       className="relative cursor-pointer"
-      style={{
-        padding: "1px",
-        background: isOpen
-          ? "linear-gradient(135deg, #1CCDE6, #DBD633)"
-          : "rgba(255,255,255,0.10)",
-        transition: "background 0.3s ease",
-      }}
+      style={{ padding: "1px" }}
       onClick={onToggle}
     >
       <div
         className="relative overflow-hidden"
         style={{
           background: isOpen
-            ? "linear-gradient(135deg, rgba(28,205,230,0.08) 0%, rgba(30,35,15,0.95) 60%, rgba(219,214,51,0.08) 100%)"
-            : "linear-gradient(180deg, #1a1a1a 0%, #111111 100%)",
+            ? "linear-gradient(135deg, rgba(28,205,230,0.16) 0%, rgba(31,38,18,0.96) 56%, rgba(219,214,51,0.14) 100%)"
+            : "linear-gradient(180deg, #17191c 0%, #101215 100%)",
           transition: "background 0.3s ease",
         }}
       >
-        {/* Glow overlays when open */}
         {isOpen && (
-          <>
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(120deg, rgba(28,205,230,0.18) 0%, rgba(17,20,24,0.5) 50%, rgba(219,214,51,0.18) 100%)",
-              }}
-            />
-          </>
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(120deg, rgba(28,205,230,0.22) 0%, rgba(17,20,24,0.52) 48%, rgba(219,214,51,0.2) 100%)",
+            }}
+          />
         )}
 
-        {/* Question row */}
         <div className="relative z-10 flex items-center justify-between px-6 py-5">
-          <h3
-            className="pr-6 text-[15px] font-semibold leading-snug text-white md:text-[17px]"
-          >
+          <h3 className="pr-6 text-[15px] font-semibold leading-snug text-white md:text-[17px]">
             {faq.question}
           </h3>
-          <span
-            className="flex-shrink-0 text-[22px] font-light leading-none text-white transition-transform duration-300"
-            style={{ transform: isOpen ? "rotate(0deg)" : "rotate(0deg)" }}
-          >
-            {isOpen ? "×" : "+"}
+          <span className="flex-shrink-0 text-[22px] font-light leading-none text-white">
+            {isOpen ? "x" : "+"}
           </span>
         </div>
 
-        {/* Answer */}
         <div
           className="overflow-hidden transition-all duration-300 ease-in-out"
           style={{ maxHeight: isOpen ? "200px" : "0px" }}
@@ -96,14 +82,28 @@ const FaqItem = ({ faq, isOpen, onToggle }) => {
         </div>
       </div>
 
-      {/* Left cyan border */}
       <span
-        className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-[#1CCDE6]"
+        className="pointer-events-none absolute left-0 top-0 z-30 h-[2px] w-10 bg-[#1CCDE6]"
         style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
       />
-      {/* Right yellow border */}
       <span
-        className="pointer-events-none absolute right-0 top-0 h-full w-[2px] bg-[#DBD633]"
+        className="pointer-events-none absolute left-0 top-0 z-30 h-full w-[2px] bg-[#1CCDE6]"
+        style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
+      />
+      <span
+        className="pointer-events-none absolute bottom-0 left-0 z-30 h-[2px] w-10 bg-[#1CCDE6]"
+        style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
+      />
+      <span
+        className="pointer-events-none absolute right-0 top-0 z-30 h-[2px] w-10 bg-[#DBD633]"
+        style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
+      />
+      <span
+        className="pointer-events-none absolute right-0 top-0 z-30 h-full w-[2px] bg-[#DBD633]"
+        style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
+      />
+      <span
+        className="pointer-events-none absolute bottom-0 right-0 z-30 h-[2px] w-10 bg-[#DBD633]"
         style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
       />
     </div>
@@ -119,7 +119,6 @@ const Faqs = () => {
 
   return (
     <section className="relative mx-auto w-full max-w-[1240px] py-14 text-white md:px-8 md:py-20">
-      {/* Background glows */}
       <div
         className="pointer-events-none absolute left-1/2 top-10 h-64 w-64 -translate-x-1/2 blur-3xl"
         style={{
@@ -135,18 +134,17 @@ const Faqs = () => {
         }}
       />
 
-      {/* Heading */}
-      <div className="relative z-10 mx-auto max-w-[640px] px-5 text-center md:px-0">
+      <div className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0">
         <h2 className="text-[30px] font-bold leading-[1.1] md:text-[52px] md:leading-[1.08]">
           Our Most Asked Questions
         </h2>
-        <p className="mx-auto mt-4 max-w-[420px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
-          Check out our most frequently asked questions here for helpful insights
-          and answers to common queries about our company and opportunities.
+        <p className="mx-auto mt-4 max-w-[500px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
+          Check out our most frequently asked questions here for helpful
+          insights and answers to common queries about our company and
+          opportunities.
         </p>
       </div>
 
-      {/* FAQ List */}
       <div className="relative z-10 mx-auto mt-10 flex max-w-[640px] flex-col gap-3 px-5 md:mt-12 md:px-0">
         {faqs.map((faq) => (
           <FaqItem
@@ -158,32 +156,10 @@ const Faqs = () => {
         ))}
       </div>
 
-      {/* CTA Button */}
       <div className="relative z-10 mt-10 flex justify-center px-5 md:mt-12 md:px-0">
-        <button
-          className="relative px-7 py-3 text-[15px] font-medium text-white transition-opacity duration-200 hover:opacity-80"
-          style={{
-            background: "transparent",
-            border: "none",
-            padding: "1px",
-          }}
-        >
-          {/* Gradient border wrapper */}
-          <span
-            className="block"
-            style={{
-              padding: "1px",
-              background: "linear-gradient(135deg, #1CCDE6, #DBD633)",
-            }}
-          >
-            <span
-              className="block px-7 py-3 text-[15px] font-medium text-white"
-              style={{ background: "#0a0a0a" }}
-            >
-              Got more questions?
-            </span>
-          </span>
-        </button>
+        <ButtonGradient className="relative px-7 py-4 text-[15px] font-medium text-white">
+          Got more questions?
+        </ButtonGradient>
       </div>
     </section>
   );

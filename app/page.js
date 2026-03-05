@@ -10,6 +10,7 @@ import PerformanceChart from "./components/PerformanceChart";
 import ChooseYourAccount from "./components/ChooseYourAccount";
 import Testimonial from "./components/Testimonial";
 import Faqs from "./components/Faqs";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
 
    <Testimonial />
    <Faqs />
+   <Footer />
    </div>
   );
 }
