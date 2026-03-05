@@ -8,7 +8,7 @@ const JoinTeam = () => {
         <h2 className="text-[32px] font-semibold leading-tight md:text-[56px]">
           Join our Team of Experienced Traders
         </h2>
-        <p className="mt-6 max-w-[980px] text-[16px] leading-relaxed text-[#B7B7B7] md:text-[30px] md:leading-tight">
+        <p className="mt-6 max-w-[980px] text-[14px] leading-relaxed text-[#B7B7B7] md:text-[18px] md:leading-tight">
           Traders can take their trading to the next level by refining their
           skills and strategies, setting themselves up for success in the
           competitive financial markets. By doing so, they can embark on their

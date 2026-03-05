@@ -13,6 +13,7 @@ import Testimonial from "./components/Testimonial";
 import Faqs from "./components/Faqs";
 import Footer from "./components/Footer";
 import Revaloution from "./components/Revaloution";
+import TradersTogether from "./components/TradersTogether";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
    <Testimonial />
    <JoinTeam />
    <Faqs />
+   <TradersTogether />
    <Footer />
    </div>
   );
