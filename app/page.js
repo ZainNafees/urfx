@@ -8,6 +8,7 @@ import ReliableCardsSection from "./components/ReliableCardsSection";
 import Community from "./components/Community";
 import PerformanceChart from "./components/PerformanceChart";
 import ChooseYourAccount from "./components/ChooseYourAccount";
+import JoinTeam from "./components/JoinTeam";
 import Testimonial from "./components/Testimonial";
 import Faqs from "./components/Faqs";
 import Footer from "./components/Footer";
@@ -27,6 +28,7 @@ export default function Home() {
    <ChooseYourAccount />
 
    <Testimonial />
+   <JoinTeam />
    <Faqs />
    <Footer />
    </div>
