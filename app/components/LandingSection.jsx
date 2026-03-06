@@ -37,7 +37,7 @@ const LandingSection = () => {
 
   return (
     <section
-      className={`relative w-full overflow-hidden min-h-[860px] sm:min-h-[940px] md:min-h-[calc(100vh-74px)] ${
+      className={`relative w-full min-h-screen overflow-hidden min-h-[860px] sm:min-h-[940px] md:min-h-[calc(100vh-74px)] ${
         theme === "light" ? "bg-gray-100" : "bg-black"
       }`}
     >
@@ -74,6 +74,26 @@ const LandingSection = () => {
             theme === "light" ? "text-black" : "text-white"
           }`}
         >
+          {theme === "light" ? (
+            <div className="mb-8 inline-block bg-gradient-to-r from-[#1CCDE6] via-[#9ED473] to-[#DBD633] px-5 py-2 text-[12px] font-semibold tracking-[2.4px] text-[#001524]">
+              THE LEADING PROP TRADING FIRM
+            </div>
+          ) : (
+            <div
+              className="mb-8 inline-block rounded p-[2px]"
+              style={{
+                border: "2px solid",
+                borderImageSlice: 1,
+                borderWidth: "2px",
+                borderImageSource:
+                  "linear-gradient(to right, #1CCDE6, #9ED473, #DBD633)",
+              }}
+            >
+              <div className="inline-block bg-gradient-to-r from-[#1CCDE6] via-[#9ED473] to-[#DBD633] bg-clip-text px-4 py-2 text-[12px] font-semibold tracking-[3px] text-transparent">
+                THE LEADING PROP TRADING FIRM
+              </div>
+            </div>
+          )}
           <h1 className="mb-6 text-[32px] md:text-[48px] font-semibold leading-[1.08] sm:mb-10 md:leading-[74px]">
             Empowering Ambitious <br />
             Traders to Succeed
