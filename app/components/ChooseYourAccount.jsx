@@ -3,14 +3,6 @@
 import { useEffect, useState } from "react";
 import ButtonGradient from "./ButtonGradient";
 import { ChevronDown } from "lucide-react";
-import { motion } from "framer-motion";
-import {
-  itemLeft,
-  itemRight,
-  itemUp,
-  sectionStagger,
-  viewportOnce,
-} from "./motionVariants";
 
 const phaseData = {
   "Phase 1": [
@@ -109,32 +101,24 @@ export default function ChooseYourAccount() {
         }`}
       />
 
-      <motion.div
-        className="relative mx-auto mt-16 w-full max-w-6xl"
-        variants={sectionStagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportOnce}
-      >
-        <motion.h2
-          variants={itemUp}
+      <div className="relative mx-auto w-full max-w-6xl mt-16">
+        <h2
           className={`text-4xl font-semibold tracking-tight text-center sm:text-5xl ${
             theme === "light" ? "text-[#0f172a]" : "text-white"
           }`}
         >
           Choose Your Account
-        </motion.h2>
-        <motion.p
-          variants={itemUp}
+        </h2>
+        <p
           className={`mt-2 text-sm text-center sm:text-base ${
             theme === "light" ? "text-[#475569]" : "text-white/60"
           }`}
         >
           Trade the way you want, how you want, for as long as you want...
-        </motion.p>
+        </p>
 
-        <motion.div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.95fr]" variants={sectionStagger}>
-          <motion.div className="space-y-7" variants={itemLeft}>
+        <div className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.95fr]">
+          <div className="space-y-7">
             <div>
               <p
                 className={`mb-3 text-xl font-semibold ${
@@ -147,7 +131,7 @@ export default function ChooseYourAccount() {
                 {["Two Phase", "Instant Funding"].map((item) => {
                   const isActive = fundingType === item;
                   return (
-                    <motion.button
+                    <button
                       key={item}
                       type="button"
                       onClick={() => setFundingType(item)}
@@ -160,10 +144,9 @@ export default function ChooseYourAccount() {
                             ? "border-[#d5deea] bg-white text-[#1f2937] hover:bg-[#f7f9fc]"
                             : "border-transparent bg-white/10 text-white/85 hover:bg-white/15"
                       }`}
-                      whileTap={{ scale: 0.97 }}
                     >
                       {item}
-                    </motion.button>
+                    </button>
                   );
                 })}
               </div>
@@ -181,7 +164,7 @@ export default function ChooseYourAccount() {
                 {platforms.map((item) => {
                   const isActive = selectedPlatform === item.logo;
                   return (
-                    <motion.button
+                    <button
                       key={item.logo}
                       type="button"
                       onClick={() =>
@@ -201,7 +184,6 @@ export default function ChooseYourAccount() {
                               ? "border-[#d5deea] bg-white hover:bg-[#f7f9fc]"
                               : "border-white/10 bg-white/10 hover:bg-white/15"
                       }`}
-                      whileTap={{ scale: item.disabled ? 1 : 0.97 }}
                     >
                       <img
                         src={item.logo}
@@ -231,7 +213,7 @@ export default function ChooseYourAccount() {
                           Coming Soon
                         </span>
                       )}
-                    </motion.button>
+                    </button>
                   );
                 })}
               </div>
@@ -281,10 +263,9 @@ export default function ChooseYourAccount() {
                 Start Challenge
               </ButtonGradient>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={itemRight}
+          <div
             className={`rounded-md p-4 sm:p-5 ${
               theme === "light"
                 ? "bg-[linear-gradient(135deg,#d7de45_0%,#98ce72_48%,#58cbc9_100%)] text-[#0f172a]"
@@ -301,7 +282,7 @@ export default function ChooseYourAccount() {
               {["Phase 1", "Phase 2", "Funded"].map((tab) => {
                 const isActive = activeTab === tab;
                 return (
-                  <motion.button
+                  <button
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
@@ -314,10 +295,9 @@ export default function ChooseYourAccount() {
                           ? "text-[#1f2937] hover:bg-white/20"
                           : "text-black/75 hover:bg-white/35"
                     }`}
-                    whileTap={{ scale: 0.97 }}
                   >
                     {tab}
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
@@ -343,9 +323,9 @@ export default function ChooseYourAccount() {
                 </div>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

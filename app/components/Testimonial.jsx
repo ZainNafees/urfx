@@ -1,14 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import {
-  itemUp,
-  scaleIn,
-  sectionStagger,
-  sectionStaggerFast,
-  viewportOnce,
-} from "./motionVariants";
 
 const testimonials = [
   {
@@ -106,29 +98,21 @@ const Testimonial = () => {
       />
 
       {/* Heading */}
-      <motion.div
-        className="relative z-10 mx-auto max-w-[900px] px-5 text-center md:px-0"
-        variants={sectionStagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportOnce}
-      >
-        <motion.h2 variants={itemUp} className="text-[30px] font-semibold leading-[1.12] md:text-[48px] md:leading-[1.08]">
+      <div className="relative z-10 mx-auto max-w-[900px] px-5 text-center md:px-0">
+        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[48px] md:leading-[1.08]">
           Trusted by Traders All Around the World
-        </motion.h2>
-        <motion.p
-          variants={itemUp}
+        </h2>
+        <p
           className={`mx-auto mt-4 max-w-[560px] text-[14px] leading-6 md:mt-5 md:text-[15px] ${
             theme === "light" ? "text-[#6b7280]" : "text-gray-400"
           }`}
         >
           See why so many traders worldwide choose URFX as their preferred Prop
           Firm.
-        </motion.p>
+        </p>
 
         {/* TrustAdvisor badge */}
-        <motion.div
-          variants={scaleIn}
+        <div
           className={`mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[15px] font-medium ${
             theme === "light" ? "text-[#0f172a]" : "text-white"
           }`}
@@ -153,26 +137,21 @@ const Testimonial = () => {
             </span>
             <span className="font-semibold">TrustAdvisor</span>
           </span>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
       {/* ── MOBILE CAROUSEL ── */}
       <div className="relative z-10 mt-10 md:hidden">
-        <motion.div
+        <div
           ref={mobileTrackRef}
-          variants={sectionStaggerFast}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
           className="flex w-full snap-x snap-mandatory overflow-x-auto"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {testimonials.map((t, index) => {
             const isActive = activeMobileCard === index;
             return (
-              <motion.div
+              <div
                 key={t.id}
-                variants={itemUp}
                 className="flex-none snap-center px-5"
                 style={{ width: "100%" }}
               >
@@ -181,10 +160,10 @@ const Testimonial = () => {
                   forcedActive={isActive}
                   theme={theme}
                 />
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
         {/* Dot indicators */}
         <div className="mt-5 flex items-center justify-center gap-2">
           {testimonials.map((_, i) => (
@@ -216,13 +195,7 @@ const Testimonial = () => {
       </div>
 
       {/* ── DESKTOP GRID ── */}
-      <motion.div
-        className="relative z-10 mt-12 hidden grid-cols-3 gap-5 md:grid"
-        variants={sectionStagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportOnce}
-      >
+      <div className="relative z-10 mt-12 hidden grid-cols-3 gap-5 md:grid">
         {testimonials.map((t) => (
           <TestimonialCard
             key={t.id}
@@ -231,7 +204,7 @@ const Testimonial = () => {
             theme={theme}
           />
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 };
@@ -241,7 +214,7 @@ const TestimonialCard = ({ testimonial, forcedActive, theme }) => {
   const isActive = forcedActive || hovered;
 
   return (
-    <motion.div
+    <div
       className="relative cursor-default"
       style={{
         padding: "1px",
@@ -249,10 +222,7 @@ const TestimonialCard = ({ testimonial, forcedActive, theme }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <motion.article
-        variants={itemUp}
-        whileHover={{ y: -5 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
+      <article
         className="relative flex h-full min-h-[220px] flex-col overflow-hidden p-5 md:min-h-[240px] md:p-6"
         style={{
           background:
@@ -335,7 +305,7 @@ const TestimonialCard = ({ testimonial, forcedActive, theme }) => {
             </div>
           </div>
         </div>
-      </motion.article>
+      </article>
 
       {/* Corner accents — cyan left, yellow right */}
       <span
@@ -362,7 +332,7 @@ const TestimonialCard = ({ testimonial, forcedActive, theme }) => {
         className="pointer-events-none absolute bottom-0 right-0 h-[2px] w-10 bg-[#DBD633]"
         style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s ease" }}
       />
-    </motion.div>
+    </div>
   );
 };
 

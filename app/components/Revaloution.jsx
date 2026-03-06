@@ -1,21 +1,11 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import ButtonGradient from "./ButtonGradient";
-import { itemUp, scaleIn, sectionStagger, viewportOnce } from "./motionVariants";
 
 const Revaloution = () => {
   return (
     <section className="mx-auto w-full px-5 py-10 text-white md:px-8">
-      <motion.div
-        className="mx-auto max-w-[1240px]"
-        variants={sectionStagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportOnce}
-      >
-        <motion.div variants={itemUp} className="mx-auto mb-8 max-w-[760px] text-center">
+      <div className="mx-auto max-w-[1240px]">
+        <div className="mx-auto mb-8 max-w-[760px] text-center">
           <h2 className="text-3xl font-bold md:text-5xl">
             Revolutionary Trading Dashboard
           </h2>
@@ -24,9 +14,9 @@ const Revaloution = () => {
             featuring advanced analytics that provide unparalleled insights into
             your performance.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div variants={scaleIn} className="mx-auto max-w-[1240px]">
+        <div className="mx-auto max-w-[1240px]">
           <Image
             src="/assets/images/laptop.png"
             alt="Trading dashboard on laptop"
@@ -43,12 +33,12 @@ const Revaloution = () => {
             className="mx-auto h-auto w-full max-w-[375px] md:hidden"
             priority
           />
-        </motion.div>
+        </div>
 
-        <motion.div variants={itemUp} className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <ButtonGradient>Start Challenge</ButtonGradient>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
