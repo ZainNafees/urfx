@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import {
   Bar,
   BarChart,
@@ -13,6 +14,14 @@ import {
 } from "recharts";
 import { ChartColumn, Clock3, DollarSign, ShieldCheck } from "lucide-react";
 import ButtonGradient from "./ButtonGradient";
+import {
+  itemLeft,
+  itemRight,
+  itemUp,
+  scaleIn,
+  sectionStagger,
+  viewportOnce,
+} from "./motionVariants";
 
 const TIME_FILTERS = ["1W", "1M", "6M", "1Y", "All Time"];
 
@@ -128,14 +137,22 @@ export default function PerformanceChart() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="mx-auto max-w-[1220px]">
-        <h1 className="mb-2 text-center text-3xl font-bold text-[#111] md:text-5xl">
+      <motion.div
+        className="mx-auto max-w-[1220px]"
+        variants={sectionStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
+        <motion.h1 variants={itemUp} className="mb-2 text-center text-3xl font-bold text-[#111] md:text-5xl">
           Real-Time Performance Tracking
-        </h1>
-        <p className="text-gray-600 mb-10 text-center">Monitor your trading performance with advanced analytics and real-time statistics</p>
+        </motion.h1>
+        <motion.p variants={itemUp} className="mb-10 text-center text-gray-600">
+          Monitor your trading performance with advanced analytics and real-time statistics
+        </motion.p>
 
-        <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1.2fr_1fr]">
-          <div className="h-full rounded-[2px] border border-[#12161e] bg-[#05070b] p-5 text-[#f3f4f6] md:p-6">
+        <motion.div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1.2fr_1fr]" variants={sectionStagger}>
+          <motion.div variants={itemLeft} className="h-full rounded-[2px] border border-[#12161e] bg-[#05070b] p-5 text-[#f3f4f6] md:p-6">
             <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[16px] leading-none text-[#7a7f87]">Profit</p>
@@ -152,7 +169,7 @@ export default function PerformanceChart() {
               {TIME_FILTERS.map((filter) => {
                 const isActive = filter === activeFilter;
                 return (
-                  <button
+                  <motion.button
                     key={filter}
                     type="button"
                     onClick={() => setActiveFilter(filter)}
@@ -161,9 +178,10 @@ export default function PerformanceChart() {
                         ? "border-white bg-white text-[#111827]"
                         : "border-[#505560] bg-[#22262d] text-[#d1d5db] hover:bg-[#2b3038]"
                     }`}
+                    whileTap={{ scale: 0.96 }}
                   >
                     {filter}
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
@@ -209,10 +227,10 @@ export default function PerformanceChart() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="flex h-full flex-col rounded-2xl p-2">
-            <div className="rounded-[2px] border border-[#12161e] bg-[#05070b] p-4 text-[#f8fafc]">
+          <motion.div variants={itemRight} className="flex h-full flex-col rounded-2xl p-2">
+            <motion.div variants={scaleIn} className="rounded-[2px] border border-[#12161e] bg-[#05070b] p-4 text-[#f8fafc]">
               <div className="mb-4">
                 <p className="text-[16px] leading-none text-[#7a7f87]">Balance</p>
                 <h2 className="mt-1 text-[42px] leading-none font-semibold tracking-[-0.03em] text-[#d8dbe1]">
@@ -244,14 +262,17 @@ export default function PerformanceChart() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="mt-3 grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2 sm:auto-rows-fr">
+            <motion.div className="mt-3 grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2 sm:auto-rows-fr" variants={sectionStagger}>
               {STAT_CARDS.map((card) => {
                 const Icon = card.icon;
                 return (
-                  <div
+                  <motion.div
                     key={card.title}
+                    variants={itemUp}
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
                     className="h-full rounded-[2px] border border-[#12161e] bg-[#05070b] p-4 text-[#f8fafc]"
                   >
                     <div className="mb-2 flex items-center gap-3">
@@ -269,17 +290,17 @@ export default function PerformanceChart() {
                       {card.badge}
                     </p>
                     <p className="mt-1 text-[14px] text-zinc-200">{card.detail}</p>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-8 flex justify-center">
+        <motion.div className="mt-8 flex justify-center" variants={itemUp}>
           <ButtonGradient>Start Challenge</ButtonGradient>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

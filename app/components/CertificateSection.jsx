@@ -2,7 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import ButtonGradient from "./ButtonGradient";
+import {
+  itemUp,
+  scaleIn,
+  sectionStagger,
+  sectionStaggerFast,
+  viewportOnce,
+} from "./motionVariants";
 
 const certificates = [
   {
@@ -89,26 +97,37 @@ const CertificateSection = () => {
       />
 
       {/* Heading */}
-      <div className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0">
-        <h2 className="text-[30px] font-semibold leading-[1.12] md:text-[40px] md:leading-[1.08]">
+      <motion.div
+        className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0"
+        variants={sectionStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
+        <motion.h2 variants={itemUp} className="text-[30px] font-semibold leading-[1.12] md:text-[40px] md:leading-[1.08]">
           Certified Trader Achievements
-        </h2>
-        <p className="mx-auto mt-4 max-w-[650px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
+        </motion.h2>
+        <motion.p variants={itemUp} className="mx-auto mt-4 max-w-[650px] text-[14px] leading-6 text-gray-400 md:mt-5 md:text-[15px]">
           Recognizing top traders for their achievements and payouts. These certificates celebrate dedication, skill, and consistent performance.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
       {/* ── MOBILE CAROUSEL (hidden on md+) ── */}
       <div className="relative z-10 mt-9 md:hidden">
-        <div
+        <motion.div
           ref={mobileTrackRef}
+          variants={sectionStaggerFast}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
           className="flex w-full snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {certificates.map((item, index) => {
             const isActive = activeMobileCard === index;
             return (
-              <div
+              <motion.div
                 key={item.id}
+                variants={itemUp}
                 className="flex-none snap-center px-5"
                 style={{ width: "100%" }}
               >
@@ -182,10 +201,10 @@ const CertificateSection = () => {
                     }`}
                   />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Dot indicators */}
         <div className="mt-5 flex items-center justify-center gap-2">
@@ -205,10 +224,21 @@ const CertificateSection = () => {
       </div>
 
       {/* ── DESKTOP GRID (hidden below md) ── */}
-      <div className="relative z-10 mt-12 hidden grid-cols-3 gap-5 md:grid">
+      <motion.div
+        className="relative z-10 mt-12 hidden grid-cols-3 gap-5 md:grid"
+        variants={sectionStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
         {certificates.map((card) => (
-          <div key={card.id} className="group relative bg-white/[0.08] p-[1px]">
-            <article className="relative flex h-full min-h-[390px] flex-col overflow-hidden bg-[linear-gradient(180deg,#1b1b1b_0%,#0f0f0f_100%)] p-6">
+          <motion.div key={card.id} className="group relative bg-white/[0.08] p-[1px]" variants={itemUp}>
+            <motion.article
+              variants={scaleIn}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative flex h-full min-h-[390px] flex-col overflow-hidden bg-[linear-gradient(180deg,#1b1b1b_0%,#0f0f0f_100%)] p-6"
+            >
               <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(28,205,230,0.28)_0%,rgba(17,20,24,0.5)_45%,rgba(219,214,51,0.24)_100%)] opacity-0 transition duration-300 group-hover:opacity-100" />
               <div className="absolute inset-0 z-10 bg-[linear-gradient(135deg,rgba(28,205,230,0.22)_0%,rgba(219,214,51,0.22)_100%)] opacity-0 transition duration-300 group-hover:opacity-100" />
 
@@ -232,7 +262,7 @@ const CertificateSection = () => {
                 </h3>
               </div>
 
-            </article>
+            </motion.article>
 
             {/* Corner accents — hover only on desktop */}
             <span className="pointer-events-none absolute left-0 top-0 h-[2px] w-10 bg-[#1CCDE6] opacity-0 transition duration-300 group-hover:opacity-100" />
@@ -241,16 +271,22 @@ const CertificateSection = () => {
             <span className="pointer-events-none absolute right-0 top-0 h-[2px] w-10 bg-[#DBD633] opacity-0 transition duration-300 group-hover:opacity-100" />
             <span className="pointer-events-none absolute right-0 top-0 h-full w-[2px] bg-[#DBD633] opacity-0 transition duration-300 group-hover:opacity-100" />
             <span className="pointer-events-none absolute bottom-0 right-0 h-[2px] w-10 bg-[#DBD633] opacity-0 transition duration-300 group-hover:opacity-100" />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* CTA */}
-      <div className="relative z-10 mt-9 flex justify-center px-5 md:mt-12 md:px-0">
+      <motion.div
+        className="relative z-10 mt-9 flex justify-center px-5 md:mt-12 md:px-0"
+        variants={itemUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
         <ButtonGradient className="px-7 py-3 text-[15px] font-medium md:px-8 md:text-base">
           View All Certificates
         </ButtonGradient>
-      </div>
+      </motion.div>
     </section>
   );
 };

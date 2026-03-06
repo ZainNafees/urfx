@@ -2,7 +2,16 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import ButtonGradient from "./ButtonGradient";
+import {
+  itemLeft,
+  itemRight,
+  itemUp,
+  scaleIn,
+  sectionStagger,
+  viewportOnce,
+} from "./motionVariants";
 
 const statCards = [
   {
@@ -49,22 +58,32 @@ const Community = () => {
         theme === "light" ? "text-[#111827]" : "text-white"
       }`}
     >
-      <h2 className="text-center text-[20px] font-bold uppercase tracking-wide md:text-[28px]">
+      <motion.h2
+        className="text-center text-[20px] font-bold uppercase tracking-wide md:text-[28px]"
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        variants={itemUp}
+      >
         URFX Community and Support
-      </h2>
+      </motion.h2>
 
-      <div className="mt-12 flex flex-col gap-4 lg:flex-row">
-        <div className="grid flex-1 grid-cols-2 gap-4 sm:grid-cols-2">
+      <motion.div
+        className="mt-12 flex flex-col gap-4 lg:flex-row"
+        variants={sectionStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
+        <motion.div className="grid flex-1 grid-cols-2 gap-4 sm:grid-cols-2" variants={sectionStagger}>
           {statCards.map((item) => (
-            <article
+            <motion.article
               key={item.id}
+              variants={itemUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
               className={`
-                flex flex-col sm:flex-row
-                items-center sm:items-center
-                text-center sm:text-left
-                gap-4 sm:gap-0
-                min-h-[150px] sm:min-h-[164px]
-                px-5 py-6
+                flex min-h-[150px] flex-col items-center gap-4 px-5 py-6 text-center sm:min-h-[164px] sm:flex-row sm:items-center sm:gap-0 sm:text-left
                 ${
                   theme === "light"
                     ? "bg-[linear-gradient(90deg,#9fe5ee_0%,#dce5a3_100%)]"
@@ -72,17 +91,16 @@ const Community = () => {
                 }
               `}
             >
-              {/* Text Section */}
               <div className="flex-1">
                 <h3
-                  className={`text-[28px] sm:text-[40px] font-semibold leading-none ${
+                  className={`text-[28px] font-semibold leading-none sm:text-[40px] ${
                     theme === "light" ? "text-[#0b1220]" : "text-white"
                   }`}
                 >
                   {item.value}
                 </h3>
                 <p
-                  className={`mt-2 sm:mt-3 text-[14px] sm:text-[20px] ${
+                  className={`mt-2 text-[14px] sm:mt-3 sm:text-[20px] ${
                     theme === "light" ? "text-[#475569]" : "text-gray-400"
                   }`}
                 >
@@ -90,23 +108,23 @@ const Community = () => {
                 </p>
               </div>
 
-              {/* Image */}
-              <Image
-                src={item.img}
-                alt={item.label}
-                width={110}
-                height={110}
-                className="
-                  h-[70px] w-[70px]
-                  sm:h-[110px] sm:w-[110px]
-                  object-contain
-                "
-              />
-            </article>
+              <motion.div variants={scaleIn}>
+                <Image
+                  src={item.img}
+                  alt={item.label}
+                  width={110}
+                  height={110}
+                  className="h-[70px] w-[70px] object-contain sm:h-[110px] sm:w-[110px]"
+                />
+              </motion.div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
-        <article className="flex w-full flex-col justify-between bg-[linear-gradient(120deg,#d9df37_0%,#24d6f4_100%)] p-8 text-black lg:w-[46%]">
+        <motion.article
+          variants={itemRight}
+          className="flex w-full flex-col justify-between bg-[linear-gradient(120deg,#d9df37_0%,#24d6f4_100%)] p-8 text-black lg:w-[46%]"
+        >
           <div>
             <p className="text-[18px] font-medium uppercase text-black/55">
               Serving Over 1.2M+ Members
@@ -119,8 +137,8 @@ const Community = () => {
               firm that truly cares about our traders.
             </p>
           </div>
-          <div className=" self-end">
-            <div className="self-end w-[195px] h-[195px]">
+          <div className="self-end">
+            <motion.div variants={scaleIn} className="h-[195px] w-[195px] self-end">
               <Image
                 src="/assets/icons/headphone.png"
                 alt="Headphone"
@@ -128,16 +146,22 @@ const Community = () => {
                 height={195}
                 className="object-contain"
               />
-            </div>
+            </motion.div>
           </div>
-        </article>
-      </div>
+        </motion.article>
+      </motion.div>
 
-      <div className="mt-10 flex justify-center">
+      <motion.div
+        className="mt-10 flex justify-center"
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        variants={itemLeft}
+      >
         <ButtonGradient className="px-8 py-3 text-base font-medium">
           Start Challenge
         </ButtonGradient>
-      </div>
+      </motion.div>
     </section>
   );
 };

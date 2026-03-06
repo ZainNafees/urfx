@@ -1,4 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  itemUp,
+  scaleIn,
+  sectionStagger,
+  viewportOnce,
+} from "./motionVariants";
 
 const PayoutSection = () => {
   const payoutData = [
@@ -30,11 +39,22 @@ const PayoutSection = () => {
 
   return (
     <section className="mx-auto w-full px-5 py-10 text-white md:px-20">
-      <div className="px-6 py-10 md:px-10">
-        <div className="grid grid-cols-2 md:gap-8 gap-12 md:grid-cols-4">
+      <motion.div
+        className="px-6 py-10 md:px-10"
+        variants={sectionStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
+        <motion.div className="grid grid-cols-2 gap-12 md:grid-cols-4 md:gap-8" variants={sectionStagger}>
           {payoutData.map((item) => (
-            <div key={item.id} className="text-center">
-              <div className="mx-auto mb-5 flex items-center justify-center">
+            <motion.div key={item.id} className="text-center" variants={itemUp}>
+              <motion.div
+                className="mx-auto mb-5 flex items-center justify-center"
+                variants={scaleIn}
+                whileHover={{ y: -4, scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 220, damping: 18 }}
+              >
                 <Image
                   src={item.icon}
                   alt={item.title}
@@ -42,17 +62,17 @@ const PayoutSection = () => {
                   height={100}
                   className="w-20 h-20 md:w-[100px] md:h-[100px] object-contain"
                 />
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-[30px] font-semibold leading-tight">
+              </motion.div>
+              <h3 className="text-xl font-semibold leading-tight sm:text-2xl md:text-[30px]">
                 {item.title}
               </h3>
-              <p className="mt-2 text-xs sm:text-sm md:text-base text-gray-400">
+              <p className="mt-2 text-xs text-gray-400 sm:text-sm md:text-base">
                 {item.subtitle}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import ButtonGradient from "./ButtonGradient";
+import { itemUp, sectionStagger, viewportOnce } from "./motionVariants";
 
 const faqs = [
   {
@@ -39,10 +41,12 @@ const faqs = [
 
 const FaqItem = ({ faq, isOpen, onToggle, theme }) => {
   return (
-    <div
+    <motion.div
       className="relative cursor-pointer"
       style={{ padding: "1px" }}
       onClick={onToggle}
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
     >
       <div
         className="relative overflow-hidden"
@@ -134,7 +138,7 @@ const FaqItem = ({ faq, isOpen, onToggle, theme }) => {
         className="pointer-events-none absolute bottom-0 right-0 z-30 h-[2px] w-10 bg-[#DBD633]"
         style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.3s ease" }}
       />
-    </div>
+    </motion.div>
   );
 };
 
@@ -190,11 +194,18 @@ const Faqs = () => {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0">
-        <h2 className="text-[30px] font-bold leading-[1.1] md:text-[52px] md:leading-[1.08]">
+      <motion.div
+        className="relative z-10 mx-auto max-w-[700px] px-5 text-center md:px-0"
+        variants={sectionStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
+        <motion.h2 variants={itemUp} className="text-[30px] font-bold leading-[1.1] md:text-[52px] md:leading-[1.08]">
           Our Most Asked Questions
-        </h2>
-        <p
+        </motion.h2>
+        <motion.p
+          variants={itemUp}
           className={`mx-auto mt-4 max-w-[500px] text-[14px] leading-6 md:mt-5 md:text-[15px] ${
             theme === "light" ? "text-[#6b7280]" : "text-gray-400"
           }`}
@@ -202,10 +213,16 @@ const Faqs = () => {
           Check out our most frequently asked questions here for helpful
           insights and answers to common queries about our company and
           opportunities.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
-      <div className="relative z-10 mx-auto mt-10 flex max-w-[640px] flex-col gap-3 px-5 md:mt-12 md:px-0">
+      <motion.div
+        className="relative z-10 mx-auto mt-10 flex max-w-[640px] flex-col gap-3 px-5 md:mt-12 md:px-0"
+        variants={sectionStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
         {faqs.map((faq) => (
           <FaqItem
             key={faq.id}
@@ -215,13 +232,19 @@ const Faqs = () => {
             theme={theme}
           />
         ))}
-      </div>
+      </motion.div>
 
-      <div className="relative z-10 mt-10 flex justify-center px-5 md:mt-12 md:px-0">
+      <motion.div
+        className="relative z-10 mt-10 flex justify-center px-5 md:mt-12 md:px-0"
+        variants={itemUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
         <ButtonGradient className="relative px-7 py-4 text-[15px] font-medium text-white">
           Got more questions?
         </ButtonGradient>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import ButtonGradient from "./ButtonGradient";
+import {
+  itemLeft,
+  itemUp,
+  sectionStagger,
+} from "./motionVariants";
 
 const LandingSection = () => {
   const [theme, setTheme] = useState("dark");
@@ -67,29 +73,52 @@ const LandingSection = () => {
         className="absolute inset-0 z-0 object-cover object-bottom md:hidden"
       />
 
+
       {/* Content */}
-      <div className="relative z-20 mx-auto flex h-full w-full max-w-[1240px] items-start px-4 pt-6 sm:px-5 sm:pt-7 md:px-8 md:pt-24">
-        <div
+      <motion.div
+        variants={sectionStagger}
+        initial="hidden"
+        animate="show"
+        className="relative z-20 mx-auto flex h-full w-full max-w-[1240px] items-start px-4 pt-6 sm:px-5 sm:pt-7 md:px-8 md:pt-24"
+      >
+        <motion.div
+          variants={itemLeft}
           className={`max-w-[580px] ${
             theme === "light" ? "text-black" : "text-white"
           }`}
         >
-          <h1 className="mb-6 text-[32px] md:text-[48px] font-semibold leading-[1.08] sm:mb-10 md:leading-[74px]">
+          <motion.div
+            variants={itemUp}
+            className="mb-8 inline-block rounded border border-[#5acdcf]/70 px-4 py-2 text-[12px] font-semibold tracking-[3px] text-[#9ED473]"
+          >
+            THE LEADING PROP TRADING FIRM
+          </motion.div>
+          <motion.h1
+            variants={itemUp}
+            className="mb-6 text-[32px] md:text-[48px] font-semibold leading-[1.08] sm:mb-10 md:leading-[74px]"
+          >
             Empowering Ambitious <br />
             Traders to Succeed
-          </h1>
+          </motion.h1>
 
-          <ButtonGradient className="mb-8 px-6 py-3 text-[16px] font-medium sm:mb-10 sm:px-8">
-            Start Challenge
-          </ButtonGradient>
+          <motion.div variants={itemUp}>
+            <ButtonGradient className="mb-8 px-6 py-3 text-[16px] font-medium sm:mb-10 sm:px-8">
+              Start Challenge
+            </ButtonGradient>
+          </motion.div>
 
-          <div
+          <motion.div
+            variants={sectionStagger}
             className={`grid grid-cols-2 gap-x-4 gap-y-4 text-[16px] leading-6 sm:gap-x-8 sm:gap-y-5 sm:text-[14px] ${
               theme === "light" ? "text-gray-700" : "text-gray-300"
             }`}
           >
             {featuresData.map((item, index) => (
-              <div key={index} className="flex items-center gap-2">
+              <motion.div
+                key={index}
+                variants={itemUp}
+                className="flex items-center gap-2"
+              >
                 <Image
                   src={item.icon}
                   alt={item.title}
@@ -97,11 +126,11 @@ const LandingSection = () => {
                   height={16}
                 />
                 <span>{item.title}</span>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

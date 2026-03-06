@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { itemUp, sectionStaggerFast, viewportOnce } from "./motionVariants";
 
 const trustStripItems = [
   {
@@ -100,23 +102,28 @@ const TrustStrip = () => {
         }}
       />
 
-      <div
+      <motion.div
         className={`marquee-track flex min-w-max items-center gap-12 px-6 py-3 md:gap-16 ${
           theme === "light" ? "text-[#0b1220]" : "text-white"
         }`}
+        variants={sectionStaggerFast}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
       >
         {loopItems.map((item, index) => (
-          <div
+          <motion.div
             key={`${item.title}-${index}`}
+            variants={itemUp}
             className="flex items-center gap-12 whitespace-nowrap"
           >
             <Image src={item.icon} alt={item.title} width={36} height={36} />
             <span className="text-[26px] font-medium leading-none">
               {item.title}
             </span>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
